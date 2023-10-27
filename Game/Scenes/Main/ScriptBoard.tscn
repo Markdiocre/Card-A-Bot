@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf70aawrtihum"]
+
+[ext_resource type="PackedScene" uid="uid://b8wrykp2gl12m" path="res://Game/Scenes/Instantiables/Cards/Card.tscn" id="1_5whjb"]
+[ext_resource type="PackedScene" uid="uid://cbydqbo62gxst" path="res://Game/Scenes/Instantiables/CardSlot.tscn" id="1_ioge1"]
+[ext_resource type="PackedScene" uid="uid://dgo7dg8lmluk1" path="res://Game/Scenes/Main/Hand.tscn" id="3_yctm0"]
+
+[node name="ScriptBoard" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("1_5whjb")]
+position = Vector2(289, 128)
+
+[node name="CardSlot" parent="." instance=ExtResource("1_ioge1")]
+position = Vector2(485, 137)
+
+[node name="Hand" parent="." instance=ExtResource("3_yctm0")]
