@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5dr8f706fy3w"]
+[gd_scene load_steps=8 format=3 uid="uid://5dr8f706fy3w"]
 
 [ext_resource type="Script" path="res://scripts/scriptboard.gd" id="1_x6avx"]
 [ext_resource type="Texture2D" uid="uid://dncmagpioy0xh" path="res://assets/Scriptboard.png" id="1_xeyjr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/visualboard.gd" id="3_06y3t"]
 [ext_resource type="Script" path="res://scripts/CounterVert.gd" id="3_8erq8"]
 [ext_resource type="Theme" uid="uid://bt5o4ssfgns84" path="res://bases/themes/CounterTheme.tres" id="4_4x5dw"]
+[ext_resource type="PackedScene" uid="uid://cb0fwe7jyox65" path="res://instantiables/GraphNodes/StartGraphNode.tscn" id="8_u6msx"]
 
 [node name="scriptboard" type="Control"]
 layout_mode = 3
@@ -28,8 +29,18 @@ offset_left = 48.0
 offset_top = 48.0
 offset_right = 1488.0
 offset_bottom = 1031.0
-scroll_offset = Vector2(-414, -379)
+right_disconnects = true
+panning_scheme = 1
 script = ExtResource("3_06y3t")
+
+[node name="StartGraphNode" parent="visualboard" instance=ExtResource("8_u6msx")]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 270.0
+offset_right = 569.0
+offset_bottom = 347.0
+mouse_filter = 1
+position_offset = Vector2(252, 270)
 
 [node name="Buttons" type="Control" parent="."]
 anchors_preset = 0
@@ -218,4 +229,9 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="connection_request" from="visualboard" to="visualboard" method="_on_connection_request"]
+[connection signal="disconnection_request" from="visualboard" to="visualboard" method="_on_disconnection_request"]
 [connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/inp_button" to="visualboard" method="_on_inp_button_pressed"]
+[connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/out__button" to="visualboard" method="_on_out__button_pressed"]
+[connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/inc__button" to="visualboard" method="_on_inc__button_pressed"]
+[connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/dec_button" to="visualboard" method="_on_dec_button_pressed"]
