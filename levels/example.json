@@ -1,0 +1,16 @@
+{
+	"title":"This is a title",
+	"problem":"Simple! Bring the inputs to the outputs",
+	"inputs":[1,2,3],
+	"outputs":[1,2,3],
+	"buttons":{
+		"inp":{
+			"enabled":true,
+			"count":3
+		},
+		"out":{
+			"enabled":true,
+			"count":3
+		}
+	}
+}
