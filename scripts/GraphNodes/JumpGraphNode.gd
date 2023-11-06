@@ -1,6 +1,6 @@
 extends GraphNode
 
-var card_type = "out"
+var card_type = "jump"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

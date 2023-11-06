@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqke5xxljdnro"]
+
+[ext_resource type="Script" path="res://scripts/GraphNodes/JumpIf.gd" id="1_ttevf"]
+[ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="2_18ltr"]
+
+[node name="JumpIfGraphNode" type="GraphNode"]
+offset_right = 372.0
+offset_bottom = 100.0
+title = "JUMP IF"
+show_close = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+slot/2/left_enabled = false
+slot/2/left_type = 0
+slot/2/left_color = Color(1, 1, 1, 1)
+slot/2/left_icon = null
+slot/2/right_enabled = false
+slot/2/right_type = 0
+slot/2/right_color = Color(1, 1, 1, 1)
+slot/2/right_icon = null
+slot/2/draw_stylebox = true
+slot/3/left_enabled = false
+slot/3/left_type = 0
+slot/3/left_color = Color(1, 1, 1, 1)
+slot/3/left_icon = null
+slot/3/right_enabled = false
+slot/3/right_type = 0
+slot/3/right_color = Color(1, 1, 1, 1)
+slot/3/right_icon = null
+slot/3/draw_stylebox = true
+script = ExtResource("1_ttevf")
+
+[node name="GraphCloseBase" parent="." instance=ExtResource("2_18ltr")]
+
+[node name="content" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="content"]
+layout_mode = 2
+text = "Jump to a card if a condition is met. Else, it will continue the flow"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="value" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="value"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="value/HBoxContainer"]
+layout_mode = 2
+text = "Condition:"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="value/HBoxContainer"]
+layout_mode = 2
+item_count = 2
+selected = 0
+popup/item_0/text = "Is equal to 0"
+popup/item_0/id = 0
+popup/item_1/text = "Is Negative"
+popup/item_1/id = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "TRUE"
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "FALSE"
+horizontal_alignment = 2

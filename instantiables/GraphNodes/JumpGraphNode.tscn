@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4mjvxbrpb1j5"]
+
+[ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="1_ejx4g"]
+[ext_resource type="Script" path="res://scripts/GraphNodes/JumpGraphNode.gd" id="1_m4gkt"]
+
+[node name="JumpGraphNode" type="GraphNode"]
+offset_right = 331.0
+offset_bottom = 100.0
+title = "JUMP"
+show_close = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_m4gkt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Jump to a card with or without previous connection"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GraphCloseBase" parent="." instance=ExtResource("1_ejx4g")]

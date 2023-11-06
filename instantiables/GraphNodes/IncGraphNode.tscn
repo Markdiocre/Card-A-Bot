@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://di3tp3fphwrl7"]
+[gd_scene load_steps=3 format=3 uid="uid://di3tp3fphwrl7"]
 
 [ext_resource type="Script" path="res://scripts/GraphNodes/IncGraphNode.gd" id="1_2v5op"]
+[ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="2_gj8v4"]
 
 [node name="IncGraphNode" type="GraphNode"]
 offset_right = 261.0
@@ -28,4 +29,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[connection signal="close_request" from="." to="." method="_on_close_request"]
+[node name="GraphCloseBase" parent="." instance=ExtResource("2_gj8v4")]

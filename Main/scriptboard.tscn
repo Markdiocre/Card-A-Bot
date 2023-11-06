@@ -1,12 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://5dr8f706fy3w"]
+[gd_scene load_steps=11 format=3 uid="uid://5dr8f706fy3w"]
 
 [ext_resource type="Script" path="res://scripts/scriptboard.gd" id="1_x6avx"]
 [ext_resource type="Texture2D" uid="uid://dncmagpioy0xh" path="res://assets/Scriptboard.png" id="1_xeyjr"]
 [ext_resource type="Theme" uid="uid://diet4gbxbnfy7" path="res://bases/themes/Button.tres" id="2_po2hg"]
 [ext_resource type="Script" path="res://scripts/visualboard.gd" id="3_06y3t"]
 [ext_resource type="Script" path="res://scripts/CounterVert.gd" id="3_8erq8"]
+[ext_resource type="Theme" uid="uid://cdq1moi2poqn2" path="res://bases/themes/CardTheme.tres" id="3_sluf2"]
 [ext_resource type="Theme" uid="uid://bt5o4ssfgns84" path="res://bases/themes/CounterTheme.tres" id="4_4x5dw"]
 [ext_resource type="PackedScene" uid="uid://cb0fwe7jyox65" path="res://instantiables/GraphNodes/StartGraphNode.tscn" id="8_u6msx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2nki"]
+bg_color = Color(0.243137, 0.34902, 0.705882, 1)
+border_width_left = 2
+border_width_top = 30
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.486275, 0.698039, 0.168627, 1)
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kot5h"]
+bg_color = Color(0.243137, 0.34902, 0.705882, 1)
+border_width_left = 2
+border_width_top = 30
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.384314, 0.556863, 0.133333, 1)
+shadow_size = 4
+shadow_offset = Vector2(10, 10)
 
 [node name="scriptboard" type="Control"]
 layout_mode = 3
@@ -29,18 +49,28 @@ offset_left = 48.0
 offset_top = 48.0
 offset_right = 1488.0
 offset_bottom = 1031.0
+theme = ExtResource("3_sluf2")
 right_disconnects = true
+use_snap = false
 panning_scheme = 1
+connection_lines_thickness = 4.0
+connection_lines_antialiased = false
+show_zoom_label = true
+minimap_enabled = false
+arrange_nodes_button_hidden = true
 script = ExtResource("3_06y3t")
 
 [node name="StartGraphNode" parent="visualboard" instance=ExtResource("8_u6msx")]
 layout_mode = 0
-offset_left = 252.0
-offset_top = 270.0
-offset_right = 569.0
-offset_bottom = 347.0
+offset_left = 168.0
+offset_top = 281.0
+offset_right = 485.0
+offset_bottom = 358.0
 mouse_filter = 1
-position_offset = Vector2(252, 270)
+theme_override_constants/title_h_offset = 5
+theme_override_styles/frame = SubResource("StyleBoxFlat_c2nki")
+theme_override_styles/selected_frame = SubResource("StyleBoxFlat_kot5h")
+position_offset = Vector2(168, 281)
 
 [node name="Buttons" type="Control" parent="."]
 anchors_preset = 0
@@ -235,3 +265,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/out__button" to="visualboard" method="_on_out__button_pressed"]
 [connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/inc__button" to="visualboard" method="_on_inc__button_pressed"]
 [connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/dec_button" to="visualboard" method="_on_dec_button_pressed"]
+[connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/add_button" to="visualboard" method="_on_add_button_pressed"]
+[connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/sub_button" to="visualboard" method="_on_sub_button_pressed"]
+[connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/jump_button" to="visualboard" method="_on_jump_button_pressed"]
+[connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/jumpif_button" to="visualboard" method="_on_jumpif_button_pressed"]
