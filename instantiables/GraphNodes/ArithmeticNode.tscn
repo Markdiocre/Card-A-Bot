@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://bde85067cbwpd"]
+
+[ext_resource type="Script" path="res://scripts/GraphNodes/ArithmeticNode.gd" id="1_6fkid"]
+[ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="2_ha7yt"]
+
+[node name="ArithmeticNode" type="GraphNode"]
+tooltip_text = "Perform arithmetic operation to the current box's value"
+title = "ARITHMETIC"
+show_close = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_6fkid")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+item_count = 5
+selected = 0
+popup/item_0/text = "Add"
+popup/item_0/id = 0
+popup/item_1/text = "Subtract"
+popup/item_1/id = 1
+popup/item_2/text = "Multiply"
+popup/item_2/id = 2
+popup/item_3/text = "Divide"
+popup/item_3/id = 3
+popup/item_4/text = "Modulo"
+popup/item_4/id = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "by "
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GraphCloseBase" parent="." instance=ExtResource("2_ha7yt")]
+
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
