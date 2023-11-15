@@ -8,9 +8,12 @@ func _ready():
 	set_slot(0,true,0,Color(Color.WHITE),true,0,Color(Color.GREEN))
 
 func perform_operation():
-	if MM.current_box_value == MM.OUTPUTS[MM.output_counter]:
-		print("They are the same")
-		MM.output_counter += 1
-		MM.process_is_done()
+	if MM.current_box_value != null:
+		if MM.current_box_value == MM.OUTPUTS[MM.output_counter]:
+	#		print("They are the same")
+			MM.output_counter += 1
+			MM.process_is_done()
+		else:
+			MM.emit_signal("print_error", "Wrong value")
 	else:
-		print("Ekis ka boi")
+		MM.emit_signal("print_error", "No current value")

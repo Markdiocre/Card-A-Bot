@@ -28,5 +28,3 @@ func reset_to_start():
 func _on_close_button_pressed():
 	error_ui.hide()
 	MM.emit_signal("error_message_closed")
-	
-

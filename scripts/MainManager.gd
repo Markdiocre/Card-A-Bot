@@ -11,6 +11,7 @@ signal level_instantiated()
 signal simulation_started()
 signal error_message_closed()
 signal closed_card(from)
+signal getting_connections
 
 
 var current_game_state = 0
@@ -65,10 +66,12 @@ func _physics_process(_delta):
 					set_state(GAME_STATE.ARRANGING)
 					return
 			else:
-				if not is_doing_something:
+				if not is_doing_something and not is_the_end_card:
 					perform_process()
+					
 
 func get_this_connection(card_name: String):
+	print("Getting connection of " + card_name)
 	var card_exist = false
 	for link in visualboard.get_connection_list():
 		if link.from == card_name:
@@ -76,22 +79,34 @@ func get_this_connection(card_name: String):
 			card_exist = true
 	
 	if card_exist == false:
+		print(card_name + " is the last card")
 		is_the_end_card = true
 		perform_process()
 #		print("The card is the enasdasdasdsdd")
 
 func process_is_done():
-	if not is_the_end_card:
+	print("Process done")
+	
+	if is_the_end_card == false:
+		
 		get_this_connection(current_graph.to)
 		is_doing_something = false
+		
+	elif is_the_end_card == true:
+		if output_counter != OUTPUTS.size():
+			emit_signal("print_error", "Not satisfied")
+		else:
+			print("YOU DID IT LES GOOOOOO")
+	
 
 func perform_process():
 	is_doing_something = true
+	current_node = null
 	if is_the_end_card == false:
 		current_node = visualboard.get_node(""+current_graph.from)
 	else:
 		current_node = visualboard.get_node(""+current_graph.to)
-#	print(current_node)
+	print("Performing process of " + current_node.name)
 	current_node.perform_operation()
 
 func instantiate_level(file_path):
@@ -116,5 +131,7 @@ func run_simulation():
 	is_the_end_card = false
 	input_counter = 0
 	output_counter = 0
+	is_doing_something = false
+	current_box_value = null
 	set_state(GAME_STATE.PLAYING)
 	emit_signal("simulation_started")
