@@ -1,16 +1,23 @@
 {
-	"title":"This is a title",
+	"title":"Getting Started",
 	"problem":"Simple! Bring the inputs to the outputs",
 	"inputs":[1,2,3],
 	"outputs":[1,2,3],
 	"buttons":{
 		"inp":{
-			"enabled":true,
 			"count":3
 		},
 		"out":{
-			"enabled":true,
 			"count":3
+		},
+		"art":{
+			"count":0
+		},
+		"jump":{
+			"count":0
+		},
+		"jumpif":{
+			"count":0
 		}
 	}
 }

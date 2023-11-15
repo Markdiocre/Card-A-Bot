@@ -6,27 +6,102 @@ var art = preload("res://instantiables/GraphNodes/ArithmeticNode.tscn")
 var jump = preload("res://instantiables/GraphNodes/JumpGraphNode.tscn")
 var jumpif = preload("res://instantiables/GraphNodes/JumpIfGraphNode.tscn")
 
+@onready var inp_button = $"../Buttons/BoxContainer/ButtonVert/inp_button"
+@onready var art__button = $"../Buttons/BoxContainer/ButtonVert/art__button"
+@onready var jump_button = $"../Buttons/BoxContainer/ButtonVert/jump_button"
+@onready var jumpif_button = $"../Buttons/BoxContainer/ButtonVert/jumpif_button"
+@onready var out__button = $"../Buttons/BoxContainer/ButtonVert/out__button"
+
+@onready var inp_label = $"../Buttons/BoxContainer/CounterVert/inp_panel/inp_label"
+@onready var out_label = $"../Buttons/BoxContainer/CounterVert/out_panel/out_label"
+@onready var art_label = $"../Buttons/BoxContainer/CounterVert/art_panel/art_label"
+@onready var jump_label = $"../Buttons/BoxContainer/CounterVert/jump_panel/jump_label"
+@onready var jumpif_label = $"../Buttons/BoxContainer/CounterVert/jumpif_panel/jumpif_label"
+
 @export var offset_counter = 1
 @export var offset_add = 20
 
 func _ready():
 	add_valid_connection_type(1,0)
 	add_valid_connection_type(2,0)
+	MM.level_instantiated.connect(set_labels)
+	MM.closed_card.connect(close_card)
 	
+func close_card(from):
+	
+	match from.card_type:
+		"inp":
+			print("Sheeesh")
+			MM.BUTTONS.inp.count += 1
+		"out":
+			MM.BUTTONS.out.count += 1
+		"art":
+			MM.BUTTONS.art.count += 1
+		"jump":
+			MM.BUTTONS.jump.count += 1
+		"jumpif":
+			MM.BUTTONS.jumpif.count += 1
+	
+	set_labels()
+
+func set_labels():
+	inp_label.text = str(MM.BUTTONS.inp.count)
+	out_label.text = str(MM.BUTTONS.out.count)
+	art_label.text = str(MM.BUTTONS.art.count)
+	jump_label.text = str(MM.BUTTONS.jump.count)
+	jumpif_label.text = str(MM.BUTTONS.jumpif.count)
+	
+	if MM.BUTTONS.inp.count <= 0:
+		inp_button.disabled = true
+	else:
+		inp_button.disabled = false
+		
+		
+	if MM.BUTTONS.out.count <= 0:
+		out__button.disabled = true
+	else:
+		out__button.disabled = false
+		
+		
+	if MM.BUTTONS.art.count <= 0:
+		art__button.disabled = true
+	else:
+		art__button.disabled = false
+		
+		
+	if MM.BUTTONS.jump.count <= 0:
+		jump_button.disabled = true
+	else:
+		jump_button.disabled = false
+		
+		
+	if MM.BUTTONS.jumpif.count <= 0:
+		jumpif_button.disabled = true
+	else:
+		jumpif_button.disabled = false
 
 func summon(type: String):
 	var temp
 	match type:
 		"inp":
 			temp = inp.instantiate()
+			MM.BUTTONS.inp.count -= 1
 		"out":
 			temp = out.instantiate()
+			MM.BUTTONS.out.count -= 1
+			
 		"art":
 			temp = art.instantiate()
+			MM.BUTTONS.art.count -= 1
+			
 		"jump":
 			temp = jump.instantiate()
+			MM.BUTTONS.jump.count -= 1
+			
 		"jumpif":
 			temp = jumpif.instantiate()
+			MM.BUTTONS.jumpif.count -= 1
+			
 	temp.position_offset = Vector2(570 , 428 )
 	
 	for node in get_children():
@@ -36,6 +111,7 @@ func summon(type: String):
 	
 	
 	add_child(temp)
+	set_labels()
 
 func _on_inp_button_pressed():
 	summon("inp")
@@ -136,7 +212,7 @@ func _on_disconnection_request(from_node, from_port, to_node, to_port):
 		from_node_instance.connection_port_FALSE_bool = false
 	else:
 		from_node_instance.connection_count = 0
-		
+	
 	disconnect_node(from_node,from_port,to_node,to_port)
 
 

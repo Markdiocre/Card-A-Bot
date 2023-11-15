@@ -9,4 +9,5 @@ func _ready():
 	pass
 
 func _on_play_button_pressed():
+	get_parent().go_to_playback()
 	MM.run_simulation()

@@ -122,7 +122,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("4_4x5dw")
 
-[node name="Label" type="Label" parent="Buttons/BoxContainer/CounterVert/inp_panel"]
+[node name="inp_label" type="Label" parent="Buttons/BoxContainer/CounterVert/inp_panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,7 +138,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("4_4x5dw")
 
-[node name="Label" type="Label" parent="Buttons/BoxContainer/CounterVert/out_panel"]
+[node name="out_label" type="Label" parent="Buttons/BoxContainer/CounterVert/out_panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,12 +149,12 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="inc_panel" type="Panel" parent="Buttons/BoxContainer/CounterVert"]
+[node name="art_panel" type="Panel" parent="Buttons/BoxContainer/CounterVert"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("4_4x5dw")
 
-[node name="Label" type="Label" parent="Buttons/BoxContainer/CounterVert/inc_panel"]
+[node name="art_label" type="Label" parent="Buttons/BoxContainer/CounterVert/art_panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,7 +170,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("4_4x5dw")
 
-[node name="Label" type="Label" parent="Buttons/BoxContainer/CounterVert/jump_panel"]
+[node name="jump_label" type="Label" parent="Buttons/BoxContainer/CounterVert/jump_panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,7 +186,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme = ExtResource("4_4x5dw")
 
-[node name="Label" type="Label" parent="Buttons/BoxContainer/CounterVert/jumpif_panel"]
+[node name="jumpif_label" type="Label" parent="Buttons/BoxContainer/CounterVert/jumpif_panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -201,16 +201,16 @@ vertical_alignment = 1
 anchors_preset = 0
 offset_left = 1524.0
 offset_top = 958.0
-offset_right = 1640.0
-offset_bottom = 998.0
+offset_right = 1832.0
+offset_bottom = 1019.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayButton"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PlayButton" type="Button" parent="PlayButton/VBoxContainer"]
-layout_mode = 2
+[node name="PlayButton" type="Button" parent="PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_po2hg")
 text = "Play"
 
@@ -221,4 +221,4 @@ text = "Play"
 [connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/art__button" to="visualboard" method="_on_art__button_pressed"]
 [connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/jump_button" to="visualboard" method="_on_jump_button_pressed"]
 [connection signal="pressed" from="Buttons/BoxContainer/ButtonVert/jumpif_button" to="visualboard" method="_on_jumpif_button_pressed"]
-[connection signal="pressed" from="PlayButton/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PlayButton/PlayButton" to="." method="_on_play_button_pressed"]

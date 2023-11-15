@@ -1,3 +1,84 @@
-[gd_scene format=3 uid="uid://giiq8bufe7m5"]
+[gd_scene load_steps=6 format=3 uid="uid://giiq8bufe7m5"]
+
+[ext_resource type="Script" path="res://Main/playback.gd" id="1_113ac"]
+[ext_resource type="Texture2D" uid="uid://b0jw27xyf00ta" path="res://assets/playback.png" id="1_qaw2t"]
+[ext_resource type="PackedScene" uid="uid://cwknt5iu4d6sa" path="res://instantiables/robot_char.tscn" id="2_4ib4f"]
+[ext_resource type="Shader" path="res://bases/grayscale.gdshader" id="4_xhvh6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd3x1"]
+shader = ExtResource("4_xhvh6")
 
 [node name="playback" type="Node2D"]
+script = ExtResource("1_113ac")
+
+[node name="Playback" type="Sprite2D" parent="."]
+position = Vector2(961, 540)
+texture = ExtResource("1_qaw2t")
+
+[node name="robot_char" parent="." instance=ExtResource("2_4ib4f")]
+position = Vector2(1255, 412)
+
+[node name="markers" type="Node2D" parent="."]
+
+[node name="inp_marker" type="Marker2D" parent="markers"]
+position = Vector2(455, 800)
+
+[node name="start_marker" type="Marker2D" parent="markers"]
+position = Vector2(975, 800)
+
+[node name="out_marker" type="Marker2D" parent="markers"]
+position = Vector2(1506, 800)
+
+[node name="errorUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1911.0
+offset_bottom = 1084.0
+
+[node name="ColorRect" type="ColorRect" parent="errorUI"]
+material = SubResource("ShaderMaterial_dd3x1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="errorUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -147.0
+offset_right = 294.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="error_message" type="Label" parent="errorUI/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 246.0
+grow_horizontal = 2
+text = "This is an example error message"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="close_button" type="Button" parent="errorUI/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
+[connection signal="pressed" from="errorUI/Panel/close_button" to="." method="_on_close_button_pressed"]
