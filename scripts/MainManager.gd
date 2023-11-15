@@ -26,7 +26,7 @@ var BUTTONS
 
 var current_graph = null
 var current_node = null
-#var next_node = null
+var next_node = null
 var has_start = false
 
 var input_counter = 0
@@ -34,6 +34,7 @@ var output_counter = 0
 var is_doing_something = false
 var is_carrying_a_box = false
 var current_box_value
+var is_the_end_card = false
 
 func set_state(state):
 	current_game_state = state
@@ -51,13 +52,12 @@ func _physics_process(_delta):
 					set_state(GAME_STATE.ARRANGING)
 					return
 				
-				get_this_connection("StartGraphNode")
-#				for link in visualboard.get_connection_list():
-#					#Check if the connection involves start
-#					if link.from == "StartGraphNode":
-#						current_graph = link
-#						next_node = link.to
-#						has_start = true
+				for link in visualboard.get_connection_list():
+					#Check if the connection involves start
+					if link.from == "StartGraphNode":
+						current_graph = link
+						next_node = link.to
+						has_start = true
 						
 				if not has_start:
 					#TODO: Raise error here
@@ -66,31 +66,33 @@ func _physics_process(_delta):
 					return
 			else:
 				if not is_doing_something:
-					do_process(current_graph)
+					perform_process()
 
 func get_this_connection(card_name: String):
+	var card_exist = false
 	for link in visualboard.get_connection_list():
-		if link.from == "StartGraphNode":
-			has_start = true
-			get_this_connection(link.to)
-			break
-			
 		if link.from == card_name:
 			current_graph = link
-		else:
-			break
+			card_exist = true
+	
+	if card_exist == false:
+		is_the_end_card = true
+		perform_process()
+#		print("The card is the enasdasdasdsdd")
 
-func do_process(graph):
+func process_is_done():
+	if not is_the_end_card:
+		get_this_connection(current_graph.to)
+		is_doing_something = false
+
+func perform_process():
 	is_doing_something = true
-	current_node = visualboard.get_node(""+graph.from)
-	print(current_node)
-	match current_node.card_type:
-		"inp":
-			if not is_carrying_a_box:
-				#TODO Handle inp
-				print("Albert")
-			else:
-				emit_signal("print_error", "The robot do not have a box to manipulate. Check your algorithm then start again!")
+	if is_the_end_card == false:
+		current_node = visualboard.get_node(""+current_graph.from)
+	else:
+		current_node = visualboard.get_node(""+current_graph.to)
+#	print(current_node)
+	current_node.perform_operation()
 
 func instantiate_level(file_path):
 	var file = FileAccess.open(file_path, FileAccess.READ)
@@ -109,7 +111,10 @@ func instantiate_level(file_path):
 func run_simulation():
 	current_graph = null
 	current_node = null
-#	next_node = null
+	next_node = null
 	has_start = false
+	is_the_end_card = false
+	input_counter = 0
+	output_counter = 0
 	set_state(GAME_STATE.PLAYING)
 	emit_signal("simulation_started")

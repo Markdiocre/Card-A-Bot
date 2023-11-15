@@ -8,4 +8,6 @@ func _ready():
 	set_slot(0,true,0,Color(Color.WHITE),true,0,Color(Color.GREEN))
 
 func perform_operation():
-	pass
+	MM.current_box_value = MM.INPUTS[MM.input_counter]
+	MM.input_counter += 1
+	MM.process_is_done()

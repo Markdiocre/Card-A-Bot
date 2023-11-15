@@ -7,3 +7,5 @@ var connection_count = 0
 func _ready():
 	set_slot(0,false,0,Color(Color.WHITE),true,0,Color(Color.GREEN))
 
+func perform_operation():
+	MM.process_is_done()
