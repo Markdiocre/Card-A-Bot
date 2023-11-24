@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://giiq8bufe7m5"]
+
+[ext_resource type="Script" path="res://Main/playback.gd" id="1_113ac"]
+[ext_resource type="Theme" uid="uid://ctpmw1pniil15" path="res://bases/themes/playback.tres" id="2_wjyoj"]
+
+[node name="playback2" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_113ac")
+
+[node name="error_ui" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_wjyoj")
+
+[node name="error_message" type="Label" parent="error_ui"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+
+[node name="close_button" type="Button" parent="error_ui"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="error_ui/close_button" to="." method="_on_close_button_pressed"]

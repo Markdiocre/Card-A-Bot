@@ -4,7 +4,12 @@ var card_type= "jumpif"
 var connection_port_TRUE_bool = false
 var connection_port_FALSE_bool = false
 
-
+#Condition index
+# 0 - equal
+# 1 - Less Than
+# 2 - Greater than
+# 3 - Less than or equal to
+# 4 - Greater than or equal to
 var condition = 0
 var spin_value = 0
 
@@ -19,5 +24,78 @@ func _on_option_button_item_selected(index):
 
 
 func _on_spin_box_value_changed(value):
-	spin_value = value
+	spin_value = int(value)
 
+func perform_operation():
+	GT.start()
+	await GT.timeout
+	MM.do_insert_line("Jump If card process is met. Checking connections... [0/2]","normal")
+	if connection_port_TRUE_bool:
+		GT.start()
+		await GT.timeout
+		MM.do_insert_line("Jump If THEN connection is established. Checking connections... [1/2]","normal")
+		if connection_port_FALSE_bool:
+			GT.start()
+			await GT.timeout
+			MM.do_insert_line("Jump If ELSE connection is established. Checking connections... [2/2]","normal")
+			GT.start()
+			await GT.timeout
+			MM.do_insert_line("All connnections are established. Checking condition...","normal")
+			var is_condition_true = false
+			match condition:
+				0:
+					GT.start()
+					await GT.timeout
+					MM.do_insert_line("Is " + str(MM.current_box_value) + " equal to array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
+					if MM.current_box_value == spin_value:
+						is_condition_true = true
+				1:
+					GT.start()
+					await GT.timeout
+					MM.do_insert_line("Is " + str(MM.current_box_value) + " less than the array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
+					if MM.current_box_value < spin_value:
+						is_condition_true = true
+				2:
+					GT.start()
+					await GT.timeout
+					MM.do_insert_line("Is " + str(MM.current_box_value) + " greater than array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
+					if MM.current_box_value > spin_value:
+						is_condition_true = true
+				3:
+					GT.start()
+					await GT.timeout
+					MM.do_insert_line("Is " + str(MM.current_box_value) + " less than or equal to array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
+					if MM.current_box_value <= spin_value:
+						is_condition_true = true
+				4:
+					GT.start()
+					await GT.timeout
+					MM.do_insert_line("Is " + str(MM.current_box_value) + " greater than or equal to array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
+					if MM.current_box_value >= spin_value:
+						is_condition_true = true
+						
+			if is_condition_true:
+				print("Condition is true")
+				GT.start()
+				await GT.timeout
+				MM.do_insert_line("Condition is true. Proceeding to THEN connection...","normal")
+				MM.process_is_done()
+			else:
+				GT.start()
+				await GT.timeout
+				MM.do_insert_line("Condition is true. Proceeding to ELSE connection...","normal")
+				MM.process_is_done(1)
+		else:
+			GT.start()
+			await GT.timeout
+			MM.do_insert_line("ERROR: ELSE Connection is not connected to any card","error")
+			GT.start()
+			await GT.timeout
+			MM.do_print_error("Connection ELSE is not connected to any card")
+	else:
+		GT.start()
+		await GT.timeout
+		MM.do_insert_line("ERROR: THEN Connection is not connected to any card","error")
+		GT.start()
+		await GT.timeout
+		MM.emit_signal("print_error", "Connection THEN is not connected to any card")

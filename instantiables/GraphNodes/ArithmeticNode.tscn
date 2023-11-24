@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="2_ha7yt"]
 
 [node name="ArithmeticNode" type="GraphNode"]
-tooltip_text = "Perform arithmetic operation to the current box's value"
+tooltip_text = "Perform arithmetic operation to the current box's value. against the specified index of the array."
 title = "ARITHMETIC"
 show_close = true
 slot/0/left_enabled = false
@@ -41,10 +41,11 @@ popup/item_4/id = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "by "
+text = "by value of index"
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+max_value = 5.0
 
 [node name="GraphCloseBase" parent="." instance=ExtResource("2_ha7yt")]
 

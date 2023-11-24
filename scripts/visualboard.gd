@@ -5,21 +5,27 @@ var out = preload("res://instantiables/GraphNodes/OutputGraphNode.tscn")
 var art = preload("res://instantiables/GraphNodes/ArithmeticNode.tscn")
 var jump = preload("res://instantiables/GraphNodes/JumpGraphNode.tscn")
 var jumpif = preload("res://instantiables/GraphNodes/JumpIfGraphNode.tscn")
+var store = preload("res://instantiables/GraphNodes/StoreToNode.tscn")
+var copy = preload("res://instantiables/GraphNodes/CopyFromNode.tscn")
 
-@onready var inp_button = $"../Buttons/BoxContainer/ButtonVert/inp_button"
-@onready var art__button = $"../Buttons/BoxContainer/ButtonVert/art__button"
-@onready var jump_button = $"../Buttons/BoxContainer/ButtonVert/jump_button"
-@onready var jumpif_button = $"../Buttons/BoxContainer/ButtonVert/jumpif_button"
-@onready var out__button = $"../Buttons/BoxContainer/ButtonVert/out__button"
+@onready var inp_button = $"../Buttons/Panel/BoxContainer/ButtonVert/inp_button"
+@onready var art__button = $"../Buttons/Panel/BoxContainer/ButtonVert/art__button"
+@onready var jump_button = $"../Buttons/Panel/BoxContainer/ButtonVert/jump_button"
+@onready var jumpif_button = $"../Buttons/Panel/BoxContainer/ButtonVert/jumpif_button"
+@onready var out__button = $"../Buttons/Panel/BoxContainer/ButtonVert/out__button"
+@onready var store_button = $"../Buttons/Panel/BoxContainer/ButtonVert/store_button"
+@onready var copy_button = $"../Buttons/Panel/BoxContainer/ButtonVert/copy_button"
+@onready var card_spawn = $"../card_spawn"
 
-@onready var inp_label = $"../Buttons/BoxContainer/CounterVert/inp_panel/inp_label"
-@onready var out_label = $"../Buttons/BoxContainer/CounterVert/out_panel/out_label"
-@onready var art_label = $"../Buttons/BoxContainer/CounterVert/art_panel/art_label"
-@onready var jump_label = $"../Buttons/BoxContainer/CounterVert/jump_panel/jump_label"
-@onready var jumpif_label = $"../Buttons/BoxContainer/CounterVert/jumpif_panel/jumpif_label"
 
-@export var offset_counter = 1
-@export var offset_add = 20
+@onready var inp_label = $"../Buttons/Panel/BoxContainer/CounterVert/inp_panel/inp_label"
+@onready var out_label = $"../Buttons/Panel/BoxContainer/CounterVert/out_panel/out_label"
+@onready var art_label = $"../Buttons/Panel/BoxContainer/CounterVert/art_panel/art_label"
+@onready var jump_label = $"../Buttons/Panel/BoxContainer/CounterVert/jump_panel/jump_label"
+@onready var jumpif_label = $"../Buttons/Panel/BoxContainer/CounterVert/jumpif_panel/jumpif_label"
+@onready var store_label = $"../Buttons/Panel/BoxContainer/CounterVert/store_panel/store_label"
+@onready var copy_label = $"../Buttons/Panel/BoxContainer/CounterVert/copy_panel/copy_label"
+
 
 func _ready():
 	add_valid_connection_type(1,0)
@@ -28,10 +34,8 @@ func _ready():
 	MM.closed_card.connect(close_card)
 	
 func close_card(from):
-	
 	match from.card_type:
 		"inp":
-			print("Sheeesh")
 			MM.BUTTONS.inp.count += 1
 		"out":
 			MM.BUTTONS.out.count += 1
@@ -41,6 +45,10 @@ func close_card(from):
 			MM.BUTTONS.jump.count += 1
 		"jumpif":
 			MM.BUTTONS.jumpif.count += 1
+		"store":
+			MM.BUTTONS.store.count += 1
+		"copy":
+			MM.BUTTONS.copy.count += 1
 	
 	set_labels()
 
@@ -50,6 +58,8 @@ func set_labels():
 	art_label.text = str(MM.BUTTONS.art.count)
 	jump_label.text = str(MM.BUTTONS.jump.count)
 	jumpif_label.text = str(MM.BUTTONS.jumpif.count)
+	store_label.text = str(MM.BUTTONS.store.count)
+	copy_label.text = str(MM.BUTTONS.copy.count)
 	
 	if MM.BUTTONS.inp.count <= 0:
 		inp_button.disabled = true
@@ -79,6 +89,17 @@ func set_labels():
 		jumpif_button.disabled = true
 	else:
 		jumpif_button.disabled = false
+		
+	if MM.BUTTONS.store.count <= 0:
+		store_button.disabled = true
+	else:
+		store_button.disabled = false
+	
+	if MM.BUTTONS.copy.count <= 0:
+		copy_button.disabled = true
+	else:
+		copy_button.disabled = false
+		
 
 func summon(type: String):
 	var temp
@@ -102,7 +123,15 @@ func summon(type: String):
 			temp = jumpif.instantiate()
 			MM.BUTTONS.jumpif.count -= 1
 			
-	temp.position_offset = Vector2(570 , 428 )
+		"store":
+			temp = store.instantiate()
+			MM.BUTTONS.store.count -= 1
+			
+		"copy":
+			temp = copy.instantiate()
+			MM.BUTTONS.copy.count -= 1
+	
+	temp.position = card_spawn.position
 	
 	for node in get_children():
 		node.selected = false
@@ -144,14 +173,15 @@ func _on_connection_request(from_node, from_port, to_node, to_port):
 			allowed = true
 			
 		"jumpif":
-
 			for node in get_connection_list():
 				#A TRUE port is already connected to something
 				if node.from_port==0 and node.from == from_node:
-					from_node_instance.connection_port_TRUE_bool = true
+					break
+#					from_node_instance.connection_port_TRUE_bool = true
 				#A FALSE port is already connected to something
-				elif  node.from_port==1 and node.from == from_node:
-					from_node_instance.connection_port_FALSE_bool = true
+				elif node.from_port==1 and node.from == from_node:
+					break
+#					from_node_instance.connection_port_FALSE_bool = true
 					
 			
 			#Should not connect to other jumps
@@ -160,9 +190,14 @@ func _on_connection_request(from_node, from_port, to_node, to_port):
 			
 			if not from_node_instance.connection_port_TRUE_bool:
 				allowed = true
+				from_node_instance.connection_port_TRUE_bool = true
+				
 			elif not from_node_instance.connection_port_FALSE_bool:
 				allowed = true
-				
+				from_node_instance.connection_port_FALSE_bool = true
+			
+			print(allowed)
+			
 			
 		"start":
 			for node in get_connection_list():
@@ -192,10 +227,12 @@ func _on_connection_request(from_node, from_port, to_node, to_port):
 			if from_node_instance.connection_count == 0:
 				allowed = true
 		
-
+	
 	if allowed:
 		connect_node(from_node,from_port,to_node,to_port)
-		
+	
+	print(get_connection_list())
+	
 	
 
 
@@ -226,3 +263,11 @@ func _on_jumpif_button_pressed():
 
 func _on_art__button_pressed():
 	summon("art")
+
+
+func _on_store_button_pressed():
+	summon("store")
+
+
+func _on_copy_button_pressed():
+	summon("copy")

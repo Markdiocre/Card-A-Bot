@@ -1,0 +1,29 @@
+{
+	"title":"Getting Started",
+	"problem":"Since this is the start, the task is simple. Simply put inputs into the outputs",
+	"inputs":[1,2,3],
+	"outputs":[1,2,3],
+	"buttons":{
+		"inp":{
+			"count":3
+		},
+		"out":{
+			"count":3
+		},
+		"art":{
+			"count":0
+		},
+		"jump":{
+			"count":0
+		},
+		"jumpif":{
+			"count":0
+		},
+		"store":{
+			"count":0
+		},
+		"copy":{
+			"count":0
+		}
+	}
+}

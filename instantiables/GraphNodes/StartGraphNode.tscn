@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/GraphNodes/StartGraphNode.gd" id="1_v1yy0"]
 
 [node name="StartGraphNode" type="GraphNode"]
+tooltip_text = "The flow of your algorithm will start from here"
 title = "START"
 slot/0/left_enabled = false
 slot/0/left_type = 0

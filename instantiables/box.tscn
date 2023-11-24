@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cppxn0w8epmoq"]
+
+[ext_resource type="Texture2D" uid="uid://8om0vti5t3k3" path="res://assets/playback2.png" id="1_i0s8n"]
+[ext_resource type="Script" path="res://scripts/box.gd" id="1_soq32"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1odg1"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alqt2"]
+size = Vector2(144, 144)
+
+[node name="box" type="StaticBody2D"]
+script = ExtResource("1_soq32")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i0s8n")
+region_enabled = true
+region_rect = Rect2(1680, 528, 144, 144)
+
+[node name="Label" type="Label" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -72.0
+offset_right = -72.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "207350"
+label_settings = SubResource("LabelSettings_1odg1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_alqt2")

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="2_wxq6m"]
 
 [node name="InputGraphNode" type="GraphNode"]
+tooltip_text = "Get an Input"
 title = "INPUT"
 show_close = true
 slot/0/left_enabled = false
@@ -19,6 +20,8 @@ script = ExtResource("1_aj7fh")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-text = "Get box from input table"
+text = "Get box from input"
 
 [node name="GraphCloseBase" parent="." instance=ExtResource("2_wxq6m")]
+
+[node name="Timer" type="Timer" parent="."]

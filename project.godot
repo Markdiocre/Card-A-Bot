@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 
 LM="*res://scripts/LevelManager.gd"
 MM="*res://scripts/MainManager.gd"
+SceneTransition="*res://bases/SceneTransition.tscn"
+GT="*res://bases/global_timer.tscn"
 
 [display]
 

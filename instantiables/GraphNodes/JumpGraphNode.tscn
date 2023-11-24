@@ -6,6 +6,7 @@
 [node name="JumpGraphNode" type="GraphNode"]
 offset_right = 331.0
 offset_bottom = 79.0
+tooltip_text = "This card is used to connect to a card with a previous connection."
 title = "JUMP"
 show_close = true
 slot/0/left_enabled = false

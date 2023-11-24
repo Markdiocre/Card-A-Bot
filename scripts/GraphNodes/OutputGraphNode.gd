@@ -8,12 +8,27 @@ func _ready():
 	set_slot(0,true,0,Color(Color.WHITE),true,0,Color(Color.GREEN))
 
 func perform_operation():
+	GT.start()
+	await GT.timeout	
+	MM.do_insert_line("Sending current value to output...", "normal")
 	if MM.current_box_value != null:
+		GT.start()
+		await GT.timeout	
+		MM.do_insert_line("Checking output value...", "normal")
 		if MM.current_box_value == MM.OUTPUTS[MM.output_counter]:
-	#		print("They are the same")
+			GT.start()
+			await GT.timeout	
+			MM.do_insert_line("Output value is correct! Proceeding...", "success")
 			MM.output_counter += 1
 			MM.process_is_done()
 		else:
-			MM.emit_signal("print_error", "Wrong value")
+			GT.start()
+			await GT.timeout	
+			MM.do_insert_line("ERROR: Output value and expected value are not the same", "error")
+			GT.start()
+			await GT.timeout	
+			MM.do_print_error("Wrong value")
 	else:
-		MM.emit_signal("print_error", "No current value")
+		GT.start()
+		await GT.timeout	
+		MM.do_print_error("No current value")

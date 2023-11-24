@@ -1,43 +1,240 @@
-[gd_scene load_steps=6 format=3 uid="uid://giiq8bufe7m5"]
+[gd_scene load_steps=24 format=3 uid="uid://giiq8bufe7m5"]
 
 [ext_resource type="Script" path="res://Main/playback.gd" id="1_113ac"]
-[ext_resource type="Texture2D" uid="uid://b0jw27xyf00ta" path="res://assets/playback.png" id="1_qaw2t"]
-[ext_resource type="PackedScene" uid="uid://cwknt5iu4d6sa" path="res://instantiables/robot_char.tscn" id="2_4ib4f"]
-[ext_resource type="Shader" path="res://bases/grayscale.gdshader" id="4_xhvh6"]
+[ext_resource type="Texture2D" uid="uid://8om0vti5t3k3" path="res://assets/playback2.png" id="2_b51ix"]
+[ext_resource type="Theme" uid="uid://ctpmw1pniil15" path="res://bases/themes/playback.tres" id="2_wjyoj"]
+[ext_resource type="Shader" path="res://bases/grayscale.gdshader" id="3_vribt"]
+[ext_resource type="Texture2D" uid="uid://eamlor8xa5q7" path="res://assets/playback/podium.png" id="5_0nru5"]
+[ext_resource type="Texture2D" uid="uid://cxjn4g14kb251" path="res://assets/playback/stage.png" id="5_vue3t"]
+[ext_resource type="Texture2D" uid="uid://h31gs4bc8eff" path="res://assets/playback/machines1.png" id="6_g4jt4"]
+[ext_resource type="Texture2D" uid="uid://bbk2sw54ycl3o" path="res://assets/playback/machines3.png" id="6_ngq2x"]
+[ext_resource type="Texture2D" uid="uid://dnrfyb6gdadh6" path="res://assets/playback/machines2.png" id="7_spbfn"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd3x1"]
-shader = ExtResource("4_xhvh6")
+[sub_resource type="ImageTexture" id="ImageTexture_6tbo6"]
 
-[node name="playback" type="Node2D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hs25p"]
+texture = ExtResource("2_b51ix")
+region_rect = Rect2(48, 48, 143, 144)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j3dyy"]
+texture = ExtResource("2_b51ix")
+texture_margin_top = 1.0
+region_rect = Rect2(48, 47, 144, 145)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_akv00"]
+texture = ExtResource("2_b51ix")
+region_rect = Rect2(48, 48, 143, 144)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsfqg"]
+content_margin_left = 0.0
+content_margin_top = 4.0
+content_margin_right = 0.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8jlc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gpt8v"]
+texture = ExtResource("2_b51ix")
+texture_margin_left = 15.0
+texture_margin_top = 17.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+region_rect = Rect2(48, 623, 144, 145)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k57uc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8kjdr"]
+texture = ExtResource("2_b51ix")
+region_rect = Rect2(48, 48, 144, 144)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aoshs"]
+texture = ExtResource("2_b51ix")
+region_rect = Rect2(48, 48, 143, 145)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv0nc"]
+texture = ExtResource("2_b51ix")
+region_rect = Rect2(47, 48, 145, 143)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oqqv"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="Theme" id="Theme_w8itg"]
+HScrollBar/icons/decrement = SubResource("ImageTexture_6tbo6")
+HScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6tbo6")
+HScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6tbo6")
+HScrollBar/icons/increment = SubResource("ImageTexture_6tbo6")
+HScrollBar/icons/increment_highlight = SubResource("ImageTexture_6tbo6")
+HScrollBar/icons/increment_pressed = SubResource("ImageTexture_6tbo6")
+HScrollBar/styles/grabber = SubResource("StyleBoxTexture_hs25p")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_j3dyy")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_akv00")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_tsfqg")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_y8jlc")
+Panel/styles/panel = SubResource("StyleBoxTexture_gpt8v")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_k57uc")
+VScrollBar/icons/decrement = SubResource("ImageTexture_6tbo6")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6tbo6")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6tbo6")
+VScrollBar/icons/increment = SubResource("ImageTexture_6tbo6")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_6tbo6")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_6tbo6")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_8kjdr")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_aoshs")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_pv0nc")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_5oqqv")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_y8jlc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwtcf"]
+shader = ExtResource("3_vribt")
+
+[node name="playback2" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_113ac")
 
-[node name="Playback" type="Sprite2D" parent="."]
-position = Vector2(961, 540)
-texture = ExtResource("1_qaw2t")
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.247059, 0.231373, 0.215686, 1)
+metadata/_edit_lock_ = true
 
-[node name="robot_char" parent="." instance=ExtResource("2_4ib4f")]
-position = Vector2(1255, 412)
+[node name="cmd" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = SubResource("Theme_w8itg")
 
-[node name="markers" type="Node2D" parent="."]
+[node name="Panel" type="Panel" parent="cmd"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 59.0
+offset_top = -470.0
+offset_right = 1373.0
+offset_bottom = 270.0
+grow_vertical = 2
 
-[node name="inp_marker" type="Marker2D" parent="markers"]
-position = Vector2(455, 800)
+[node name="ScrollContainer" type="ScrollContainer" parent="cmd/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1299.0
+offset_top = -350.0
+offset_right = -15.0
+offset_bottom = 355.0
+grow_horizontal = 0
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
 
-[node name="start_marker" type="Marker2D" parent="markers"]
-position = Vector2(975, 800)
+[node name="VBoxContainer" type="VBoxContainer" parent="cmd/Panel/ScrollContainer"]
+custom_minimum_size = Vector2(1200, 50)
+layout_mode = 2
 
-[node name="out_marker" type="Marker2D" parent="markers"]
-position = Vector2(1506, 800)
+[node name="stage" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="podium" type="TextureRect" parent="stage"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("5_0nru5")
+
+[node name="stage" type="TextureRect" parent="stage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_vue3t")
+
+[node name="machines3" type="TextureRect" parent="stage"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("6_ngq2x")
+
+[node name="machines2" type="TextureRect" parent="stage"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("7_spbfn")
+
+[node name="machines1" type="TextureRect" parent="stage"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("6_g4jt4")
 
 [node name="errorUI" type="Control" parent="."]
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1911.0
-offset_bottom = 1084.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="errorUI"]
-material = SubResource("ShaderMaterial_dd3x1")
+material = SubResource("ShaderMaterial_cwtcf")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,33 +249,41 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -294.0
-offset_top = -147.0
-offset_right = 294.0
-offset_bottom = 147.0
+offset_left = -376.0
+offset_top = -183.0
+offset_right = 376.0
+offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_wjyoj")
+
+[node name="close_button" type="Button" parent="errorUI/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -109.0
+offset_right = 142.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "OKKKK"
 
 [node name="error_message" type="Label" parent="errorUI/Panel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 246.0
+offset_left = 21.0
+offset_top = 19.0
+offset_right = -19.0
+offset_bottom = 240.0
 grow_horizontal = 2
-text = "This is an example error message"
+text = "This is a sample text"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-
-[node name="close_button" type="Button" parent="errorUI/Panel"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -48.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Close"
 
 [connection signal="pressed" from="errorUI/Panel/close_button" to="." method="_on_close_button_pressed"]

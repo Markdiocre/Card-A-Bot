@@ -8,4 +8,7 @@ func _ready():
 	set_slot(0,false,0,Color(Color.WHITE),true,0,Color(Color.GREEN))
 
 func perform_operation():
+	GT.start()
+	await GT.timeout	
+	MM.emit_signal("insert_line","Start found. Executing flow...", "normal")
 	MM.process_is_done()

@@ -5,20 +5,23 @@
 [ext_resource type="PackedScene" uid="uid://5dr8f706fy3w" path="res://Main/scriptboard.tscn" id="2_pfhu8"]
 
 [node name="main" type="Node2D"]
+position = Vector2(1004, 857)
 script = ExtResource("1_xtr71")
 
 [node name="playback" parent="." instance=ExtResource("1_6bj70")]
-metadata/_edit_lock_ = true
-
-[node name="playbackcam" type="Camera2D" parent="playback"]
-anchor_mode = 0
-metadata/_edit_lock_ = true
+offset_left = -1004.0
+offset_top = -857.0
+offset_right = -1004.0
+offset_bottom = -857.0
+metadata/_edit_use_anchors_ = true
 
 [node name="scriptboard" parent="." instance=ExtResource("2_pfhu8")]
-offset_top = 1080.0
-offset_bottom = 1080.0
-metadata/_edit_lock_ = true
+offset_left = -1004.0
+offset_top = 227.0
+offset_right = -1004.0
+offset_bottom = 227.0
 
-[node name="scriptboardcam" type="Camera2D" parent="scriptboard"]
-anchor_mode = 0
-metadata/_edit_lock_ = true
+[node name="MainCam" type="Camera2D" parent="."]
+position = Vector2(-44, 762)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

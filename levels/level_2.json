@@ -1,0 +1,29 @@
+{
+	"title":"Jump for the better!",
+	"problem":"Just like the last time but use the jump card this time to make loops!",
+	"inputs":[1,2,3],
+	"outputs":[1,2,3],
+	"buttons":{
+		"inp":{
+			"count":1
+		},
+		"out":{
+			"count":1
+		},
+		"art":{
+			"count":0
+		},
+		"jump":{
+			"count":1
+		},
+		"jumpif":{
+			"count":0
+		},
+		"store":{
+			"count":0
+		},
+		"copy":{
+			"count":0
+		}
+	}
+}

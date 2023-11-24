@@ -6,6 +6,7 @@
 [node name="OutputGraphNode" type="GraphNode"]
 offset_right = 266.0
 offset_bottom = 123.0
+tooltip_text = "Submit the current box to the output"
 title = "OUTPUT"
 show_close = true
 slot/0/left_enabled = false

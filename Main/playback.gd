@@ -1,30 +1,56 @@
-extends Node2D
+extends Control
 
-@onready var robot_char = $robot_char
-@onready var inp_marker = $markers/inp_marker
-@onready var start_marker = $markers/start_marker
-@onready var out_marker = $markers/out_marker
 @onready var error_ui = $errorUI
 
 @onready var error_message = $errorUI/Panel/error_message
 @onready var close_button = $errorUI/Panel/close_button
+@onready var v_box_container = $cmd/Panel/ScrollContainer/VBoxContainer
+
+
+var line = preload("res://instantiables/line.tscn")
+
 
 var play_speed = 1
+
+var button_messages = [
+	"Aww man!",
+	"Got it!",
+	"OKKK",
+	"Worth the try"
+]
 
 func _ready():
 	error_ui.hide()
 	MM.print_error.connect(display_error_message)
-	MM.simulation_started.connect(reset_to_start)
+	MM.insert_line.connect(insert_line)
+	MM.simulation_started.connect(start_simulation)
+
+func start_simulation():
+	for i in v_box_container.get_children():
+		i.queue_free()
+	
+func insert_line(message, type):
+	var new_line = line.instantiate()
+	new_line.text = message
+	
+	match type:
+		"error":
+			new_line.add_theme_color_override("font_color", Color.RED)
+		"start":
+			new_line.add_theme_color_override("font_color", Color.DARK_BLUE)
+		"normal":
+			new_line.add_theme_color_override("font_color", Color.WHITE)
+		"note":
+			new_line.add_theme_color_override("font_color", Color.YELLOW)
+	
+	v_box_container.add_child(new_line)
 
 func display_error_message(message: String):
+	close_button.text = button_messages[randi_range(0, button_messages.size()-1)]
 	error_ui.show()
 	error_message.text = message
-	robot_char.set_state(robot_char.CHAR_STATE.PAUSED)
-
-func reset_to_start():
-	robot_char.position = start_marker.position
-	robot_char.set_state(robot_char.CHAR_STATE.IDLE)
 
 func _on_close_button_pressed():
 	error_ui.hide()
 	MM.emit_signal("error_message_closed")
+	

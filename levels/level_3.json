@@ -1,0 +1,29 @@
+{
+	"title":"Shuffle shuffle",
+	"problem":"Swap the values of every 2 numbers",
+	"inputs":[1,2,3,4],
+	"outputs":[2,1,4,3],
+	"buttons":{
+		"inp":{
+			"count":2
+		},
+		"out":{
+			"count":2
+		},
+		"art":{
+			"count":0
+		},
+		"jump":{
+			"count":1
+		},
+		"jumpif":{
+			"count":0
+		},
+		"store":{
+			"count":2
+		},
+		"copy":{
+			"count":2
+		}
+	}
+}

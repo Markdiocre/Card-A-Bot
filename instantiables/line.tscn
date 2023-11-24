@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://gto6e6y4sk8k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1sylt"]
+font_size = 32
+
+[node name="line" type="Label"]
+offset_right = 581.0
+offset_bottom = 23.0
+text = "This is an example line"
+label_settings = SubResource("LabelSettings_1sylt")
+autowrap_mode = 3
