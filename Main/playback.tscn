@@ -1,14 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://giiq8bufe7m5"]
+[gd_scene load_steps=39 format=3 uid="uid://giiq8bufe7m5"]
 
+[ext_resource type="Material" uid="uid://mxlf80h8xwto" path="res://bases/minimal_ctr.tres" id="1_3lj63"]
 [ext_resource type="Script" path="res://Main/playback.gd" id="1_113ac"]
 [ext_resource type="Texture2D" uid="uid://8om0vti5t3k3" path="res://assets/playback2.png" id="2_b51ix"]
 [ext_resource type="Theme" uid="uid://ctpmw1pniil15" path="res://bases/themes/playback.tres" id="2_wjyoj"]
+[ext_resource type="Shader" path="res://scripts/scriptboard.gdshader" id="3_8g1ak"]
 [ext_resource type="Shader" path="res://bases/grayscale.gdshader" id="3_vribt"]
-[ext_resource type="Texture2D" uid="uid://eamlor8xa5q7" path="res://assets/playback/podium.png" id="5_0nru5"]
-[ext_resource type="Texture2D" uid="uid://cxjn4g14kb251" path="res://assets/playback/stage.png" id="5_vue3t"]
-[ext_resource type="Texture2D" uid="uid://h31gs4bc8eff" path="res://assets/playback/machines1.png" id="6_g4jt4"]
-[ext_resource type="Texture2D" uid="uid://bbk2sw54ycl3o" path="res://assets/playback/machines3.png" id="6_ngq2x"]
-[ext_resource type="Texture2D" uid="uid://dnrfyb6gdadh6" path="res://assets/playback/machines2.png" id="7_spbfn"]
+[ext_resource type="FontFile" uid="uid://cpab8cal6odo7" path="res://assets/monogram.ttf" id="5_42pr2"]
+[ext_resource type="LabelSettings" uid="uid://drar8ke7yykd" path="res://bases/themes/arrays.tres" id="6_pjeuy"]
+[ext_resource type="Texture2D" uid="uid://bkx2au1u2mbqo" path="res://assets/playback/warning.png" id="7_tnras"]
+[ext_resource type="Texture2D" uid="uid://8yjemrutqvmv" path="res://assets/playback/trophy.png" id="8_o7oft"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_6tbo6"]
 
@@ -59,11 +60,11 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gpt8v"]
 texture = ExtResource("2_b51ix")
-texture_margin_left = 15.0
-texture_margin_top = 17.0
-texture_margin_right = 15.0
-texture_margin_bottom = 15.0
-region_rect = Rect2(48, 623, 144, 145)
+texture_margin_left = 9.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(48, 240, 144, 143)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k57uc"]
 
@@ -117,125 +118,220 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_pv0nc")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_5oqqv")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_y8jlc")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vltye"]
+shader = ExtResource("3_8g1ak")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1plvd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3esc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjhmd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jenbn"]
+texture = ExtResource("2_b51ix")
+texture_margin_left = 5.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(433, 432, 143, 144)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opq5g"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_jj25j"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 2
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("5_42pr2")
+Button/styles/disabled = SubResource("StyleBoxFlat_1plvd")
+Button/styles/focus = SubResource("StyleBoxFlat_p3esc")
+Button/styles/hover = SubResource("StyleBoxFlat_wjhmd")
+Button/styles/normal = SubResource("StyleBoxTexture_jenbn")
+Button/styles/pressed = SubResource("StyleBoxFlat_opq5g")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cwtcf"]
 shader = ExtResource("3_vribt")
 
-[node name="playback2" type="Control"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5x66h"]
+texture = ExtResource("2_b51ix")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(48, 240, 144, 144)
+
+[sub_resource type="Theme" id="Theme_2bjur"]
+Panel/styles/panel = SubResource("StyleBoxTexture_5x66h")
+
+[sub_resource type="LabelSettings" id="LabelSettings_v4rtk"]
+font_size = 64
+outline_size = 20
+outline_color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fifc"]
+font_size = 128
+font_color = Color(0.933333, 0.760784, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3jv7j"]
+font_size = 128
+font_color = Color(0.486275, 0.901961, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nwy4u"]
+font_size = 64
+font_color = Color(0, 0.682353, 0.937255, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ft7io"]
+font_size = 64
+font_color = Color(0.878431, 0, 0.0313726, 1)
+
+[node name="playback" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_113ac")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-clip_contents = true
-custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 1
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.247059, 0.231373, 0.215686, 1)
-metadata/_edit_lock_ = true
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="cmd" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme = SubResource("Theme_w8itg")
-
-[node name="Panel" type="Panel" parent="cmd"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 59.0
-offset_top = -470.0
-offset_right = 1373.0
-offset_bottom = 270.0
-grow_vertical = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="cmd/Panel"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -1299.0
-offset_top = -350.0
-offset_right = -15.0
-offset_bottom = 355.0
-grow_horizontal = 0
-grow_vertical = 2
-follow_focus = true
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="cmd/Panel/ScrollContainer"]
-custom_minimum_size = Vector2(1200, 50)
-layout_mode = 2
-
-[node name="stage" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="podium" type="TextureRect" parent="stage"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-texture = ExtResource("5_0nru5")
-
-[node name="stage" type="TextureRect" parent="stage"]
-layout_mode = 1
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("1_3lj63")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("5_vue3t")
+metadata/_edit_lock_ = true
 
-[node name="machines3" type="TextureRect" parent="stage"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-texture = ExtResource("6_ngq2x")
-
-[node name="machines2" type="TextureRect" parent="stage"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-texture = ExtResource("7_spbfn")
-
-[node name="machines1" type="TextureRect" parent="stage"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-texture = ExtResource("6_g4jt4")
-
-[node name="errorUI" type="Control" parent="."]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 2.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[node name="cmd" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -603.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_w8itg")
+
+[node name="Panel" type="Panel" parent="cmd"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="cmd/Panel"]
+material = SubResource("ShaderMaterial_vltye")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 50.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="cmd/Panel/ScrollContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="cmd/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -157.0
+offset_top = 15.0
+offset_right = -15.0
+offset_bottom = 75.0
+grow_horizontal = 0
+theme = SubResource("Theme_jj25j")
+text = "FAST FORWARD"
+
+[node name="errorUI" type="CanvasLayer" parent="."]
+visible = false
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="errorUI"]
 material = SubResource("ShaderMaterial_cwtcf")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -243,7 +339,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="errorUI"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -264,9 +359,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -137.0
+offset_left = -307.0
 offset_top = -109.0
-offset_right = 142.0
+offset_right = 340.0
 offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -276,7 +371,89 @@ text = "OKKKK"
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 21.0
+offset_left = 269.0
+offset_top = 19.0
+offset_right = -36.0
+offset_bottom = 240.0
+grow_horizontal = 2
+text = "This is a sample text"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="errorUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_top = 50.0
+offset_right = -521.0
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_tnras")
+
+[node name="winUI" type="CanvasLayer" parent="."]
+visible = false
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="winUI"]
+material = SubResource("ShaderMaterial_cwtcf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="winUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -183.0
+offset_right = 376.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wjyoj")
+
+[node name="retry_button" type="Button" parent="winUI/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -108.0
+offset_right = -31.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "RETRY"
+
+[node name="next_button" type="Button" parent="winUI/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -109.0
+offset_right = 319.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "NEXT LEVEL"
+
+[node name="win_message" type="Label" parent="winUI/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 290.0
 offset_top = 19.0
 offset_right = -19.0
 offset_bottom = 240.0
@@ -286,4 +463,330 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="TextureRect" type="TextureRect" parent="winUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 23.0
+offset_right = -482.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_o7oft")
+
+[node name="trackers" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -603.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_2bjur")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="trackers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="current_card" type="Panel" parent="trackers/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 19.0
+offset_right = -12.0
+offset_bottom = 267.0
+grow_horizontal = 2
+
+[node name="array_number" type="Label" parent="trackers/Panel/current_card"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 54.0
+text = "Current Card"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="curr_card" type="Label" parent="trackers/Panel/current_card"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXAMPLE"
+label_settings = SubResource("LabelSettings_1fifc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="trackers/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 275.0
+offset_right = -16.0
+offset_bottom = 478.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="trackers/Panel/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="trackers/Panel/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="arr0" type="Panel" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(189, 100)
+layout_mode = 2
+
+[node name="arr0" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer/arr0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Array 1
+"
+label_settings = ExtResource("6_pjeuy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="array_number" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer/arr0"]
+layout_mode = 1
+offset_right = 29.0
+offset_bottom = 54.0
+text = "0"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="arr1" type="Panel" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(189, 100)
+layout_mode = 2
+
+[node name="arr1" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer/arr1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Array 1
+"
+label_settings = ExtResource("6_pjeuy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="array_number" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer/arr1"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "1"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="arr2" type="Panel" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(189, 100)
+layout_mode = 2
+
+[node name="arr2" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer/arr2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Array 1
+"
+label_settings = ExtResource("6_pjeuy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="array_number" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer/arr2"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "2
+"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="trackers/Panel/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="arr3" type="Panel" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(189, 100)
+layout_mode = 2
+
+[node name="arr3" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2/arr3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Array 1
+"
+label_settings = ExtResource("6_pjeuy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="array_number" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2/arr3"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "3
+"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="arr4" type="Panel" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(189, 100)
+layout_mode = 2
+
+[node name="arr4" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2/arr4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Array 1
+"
+label_settings = ExtResource("6_pjeuy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="array_number" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2/arr4"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "4
+"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="arr5" type="Panel" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(189, 100)
+layout_mode = 2
+
+[node name="arr5" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2/arr5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<null>
+"
+label_settings = ExtResource("6_pjeuy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="array_number" type="Label" parent="trackers/Panel/Control/VBoxContainer/HBoxContainer2/arr5"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "5"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="curr_value" type="Panel" parent="trackers/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 486.0
+offset_right = -16.0
+offset_bottom = 723.0
+grow_horizontal = 2
+
+[node name="curr_val" type="Label" parent="trackers/Panel/curr_value"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "Current Value"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="curr_value" type="Label" parent="trackers/Panel/curr_value"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXAMPLE"
+label_settings = SubResource("LabelSettings_3jv7j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inps" type="Panel" parent="trackers/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 734.0
+offset_right = 587.0
+offset_bottom = 889.0
+
+[node name="inps_label" type="Label" parent="trackers/Panel/inps"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "Inputs acquired"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="inps" type="Label" parent="trackers/Panel/inps"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 55.0
+offset_right = -15.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXAMPLE"
+label_settings = SubResource("LabelSettings_nwy4u")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="outs" type="Panel" parent="trackers/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 897.0
+offset_right = 587.0
+offset_bottom = 1052.0
+
+[node name="outs_label" type="Label" parent="trackers/Panel/outs"]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 54.0
+text = "Outputs Submitted"
+label_settings = SubResource("LabelSettings_v4rtk")
+
+[node name="outs" type="Label" parent="trackers/Panel/outs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 58.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXAMPLE"
+label_settings = SubResource("LabelSettings_ft7io")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="cmd/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="errorUI/Panel/close_button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="winUI/Panel/retry_button" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="winUI/Panel/next_button" to="." method="_on_next_button_pressed"]

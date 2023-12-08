@@ -1,5 +1,6 @@
 extends GraphNode
 
+@onready var main = get_tree().root.get_node("new_main")
 # Arithmetic Index
 # 0 - ADD
 # 1 - SUBTRACT
@@ -24,23 +25,24 @@ func _on_spin_box_value_changed(value):
 	spin_value = int(value)
 
 func current_value():
-	MM.do_insert_line("Current value is now: " + str(MM.current_box_value), "normal")
+	MM.do_insert_line("Current value is now: " + str(main.current_box_value), "normal")
 	
 	
 
 func perform_operation():
+	MM.emit_signal("set_curr_card","ARITHMETIC")
 	GT.start()
 	await GT.timeout
 	MM.do_insert_line("Performing arithmetic operation...", "normal")
-	if MM.current_box_value != null:
-		if MM.ARRAY_VALS[spin_value] != null:
+	if main.current_box_value != null:
+		if main.ARRAY_VALS[spin_value] != null:
 			match arithmetic_index:
 				0:
 					GT.start()
 					await GT.timeout
 					
-					MM.do_insert_line("Adding "+ str(MM.current_box_value) + " to index "+ str(spin_value), "normal")
-					MM.current_box_value = MM.current_box_value + MM.ARRAY_VALS[spin_value]					
+					MM.do_insert_line("Adding "+ str(main.current_box_value) + " to index "+ str(spin_value), "normal")
+					main.current_box_value = main.current_box_value + main.ARRAY_VALS[spin_value]					
 					GT.start()
 					await GT.timeout
 					current_value()
@@ -48,9 +50,9 @@ func perform_operation():
 					GT.start()
 					await GT.timeout
 					
-					MM.do_insert_line("Subtracting "+ str(MM.current_box_value) + " to index "+ str(spin_value), "normal")
+					MM.do_insert_line("Subtracting "+ str(main.current_box_value) + " to index "+ str(spin_value), "normal")
 					
-					MM.current_box_value = MM.current_box_value - MM.ARRAY_VALS[spin_value]
+					main.current_box_value = main.current_box_value - main.ARRAY_VALS[spin_value]
 					GT.start()
 					await GT.timeout
 					current_value()
@@ -58,9 +60,9 @@ func perform_operation():
 					GT.start()
 					await GT.timeout
 					
-					MM.do_insert_line("Multiplying "+ str(MM.current_box_value) + " to index "+ str(spin_value), "normal")
+					MM.do_insert_line("Multiplying "+ str(main.current_box_value) + " to index "+ str(spin_value), "normal")
 					
-					MM.current_box_value = MM.current_box_value * MM.ARRAY_VALS[spin_value]
+					main.current_box_value = main.current_box_value * main.ARRAY_VALS[spin_value]
 					GT.start()
 					await GT.timeout
 					current_value()
@@ -68,26 +70,26 @@ func perform_operation():
 					GT.start()
 					await GT.timeout
 					
-					MM.do_insert_line("Dividing "+ str(MM.current_box_value) + " to index "+ str(spin_value), "normal")
+					MM.do_insert_line("Dividing "+ str(main.current_box_value) + " to index "+ str(spin_value), "normal")
 					
-					MM.current_box_value = int(floor(MM.current_box_value / MM.ARRAY_VALS[spin_value]))
+					main.current_box_value = int(floor(main.current_box_value / main.ARRAY_VALS[spin_value]))
 					GT.start()
 					await GT.timeout
-					MM.do_insert_line("Current value is now: " + str(MM.current_box_value), "normal")
+					MM.do_insert_line("Current value is now: " + str(main.current_box_value), "normal")
 				
 				4:
 					GT.start()
 					await GT.timeout
 					
-					MM.do_insert_line("Applying Modulo of "+ str(MM.current_box_value) + " to index "+ str(spin_value), "normal")
+					MM.do_insert_line("Applying Modulo of "+ str(main.current_box_value) + " to index "+ str(spin_value), "normal")
 					
-					MM.current_box_value = int(floor(MM.current_box_value % MM.ARRAY_VALS[spin_value]))
+					main.current_box_value = int(floor(main.current_box_value % main.ARRAY_VALS[spin_value]))
 					GT.start()
 					await GT.timeout
 					current_value()
 					
-			print("Value is now " + str(MM.current_box_value))
-			MM.process_is_done()
+			print("Value is now " + str(main.current_box_value))
+			main.process_is_done()
 		else:
 			GT.start()
 			await GT.timeout

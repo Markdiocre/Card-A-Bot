@@ -1,15 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://5dr8f706fy3w"]
+[gd_scene load_steps=31 format=3 uid="uid://5dr8f706fy3w"]
 
 [ext_resource type="Script" path="res://scripts/scriptboard.gd" id="1_x6avx"]
-[ext_resource type="Texture2D" uid="uid://dncmagpioy0xh" path="res://assets/Scriptboard.png" id="2_0gp0p"]
 [ext_resource type="Theme" uid="uid://diet4gbxbnfy7" path="res://bases/themes/Button.tres" id="2_po2hg"]
 [ext_resource type="Script" path="res://scripts/visualboard.gd" id="3_06y3t"]
 [ext_resource type="Script" path="res://scripts/CounterVert.gd" id="3_8erq8"]
 [ext_resource type="Theme" uid="uid://cdq1moi2poqn2" path="res://bases/themes/CardTheme.tres" id="3_sluf2"]
 [ext_resource type="Theme" uid="uid://bt5o4ssfgns84" path="res://bases/themes/CounterTheme.tres" id="4_4x5dw"]
-[ext_resource type="FontFile" uid="uid://bppslkjcgj0rf" path="res://assets/PixeloidSans-mLxMm.ttf" id="8_6xqic"]
+[ext_resource type="Theme" uid="uid://by8xwcd8wehui" path="res://assets/scripboard_panel.tres" id="6_0b2rn"]
 [ext_resource type="PackedScene" uid="uid://cb0fwe7jyox65" path="res://instantiables/GraphNodes/StartGraphNode.tscn" id="8_u6msx"]
 [ext_resource type="Texture2D" uid="uid://8om0vti5t3k3" path="res://assets/playback2.png" id="9_uynke"]
+[ext_resource type="FontFile" uid="uid://cpab8cal6odo7" path="res://assets/monogram.ttf" id="10_4ak2m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70yyp"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -29,52 +29,55 @@ border_color = Color(0.384314, 0.556863, 0.133333, 1)
 shadow_size = 4
 shadow_offset = Vector2(10, 10)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nk4tj"]
-texture = ExtResource("9_uynke")
-texture_margin_left = 13.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 12.0
-region_rect = Rect2(815, 528, 145, 144)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uvuo3"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aqx7p"]
-texture = ExtResource("9_uynke")
-texture_margin_left = 12.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 12.0
-region_rect = Rect2(816, 672, 144, 144)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ilmv"]
-texture = ExtResource("9_uynke")
-texture_margin_left = 12.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 12.0
-region_rect = Rect2(816, 672, 144, 144)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67p3s"]
-texture = ExtResource("9_uynke")
-texture_margin_left = 12.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 12.0
-region_rect = Rect2(816, 240, 144, 144)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2cbj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36jnu"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
-[sub_resource type="Theme" id="Theme_e2gdq"]
-Button/colors/font_color = Color(0.247059, 0.286275, 0.180392, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0fyo1"]
+texture = ExtResource("9_uynke")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(48, 768, 96, 96)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0j5rq"]
+texture = ExtResource("9_uynke")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(48, 864, 96, 96)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nwbpa"]
+texture = ExtResource("9_uynke")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(48, 768, 96, 96)
+
+[sub_resource type="Theme" id="Theme_5grrj"]
+Button/colors/font_color = Color(0.623529, 0.333333, 0.25098, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
@@ -91,26 +94,81 @@ Button/constants/h_separation = 2
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("8_6xqic")
-Button/styles/disabled = SubResource("StyleBoxTexture_nk4tj")
-Button/styles/focus = SubResource("StyleBoxTexture_aqx7p")
-Button/styles/hover = SubResource("StyleBoxTexture_5ilmv")
-Button/styles/normal = SubResource("StyleBoxTexture_67p3s")
-Button/styles/pressed = SubResource("StyleBoxFlat_j2cbj")
+Button/fonts/font = ExtResource("10_4ak2m")
+Button/styles/disabled = SubResource("StyleBoxEmpty_uvuo3")
+Button/styles/focus = SubResource("StyleBoxFlat_36jnu")
+Button/styles/hover = SubResource("StyleBoxTexture_0fyo1")
+Button/styles/normal = SubResource("StyleBoxTexture_0j5rq")
+Button/styles/pressed = SubResource("StyleBoxTexture_nwbpa")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kk8c7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhpa5"]
+texture = ExtResource("9_uynke")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(192, 768, 96, 96)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mgfxj"]
+texture = ExtResource("9_uynke")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(192, 864, 96, 96)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jltfl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_akv6p"]
+Button/colors/font_color = Color(0.517647, 0.623529, 0.321569, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 2
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("10_4ak2m")
+Button/styles/disabled = SubResource("StyleBoxEmpty_kk8c7")
+Button/styles/focus = SubResource("StyleBoxFlat_36jnu")
+Button/styles/hover = SubResource("StyleBoxTexture_xhpa5")
+Button/styles/normal = SubResource("StyleBoxTexture_mgfxj")
+Button/styles/pressed = SubResource("StyleBoxFlat_jltfl")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wldl7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4op23"]
 texture = ExtResource("9_uynke")
-texture_margin_left = 39.0
-texture_margin_top = 27.0
-texture_margin_right = 15.0
-texture_margin_bottom = 23.0
-region_rect = Rect2(237, 45, 150, 150)
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(432, 432, 143, 143)
 
 [sub_resource type="Theme" id="Theme_p00ac"]
-Label/colors/font_color = Color(0.678431, 0.537255, 0.470588, 1)
-Label/colors/font_outline_color = Color(0.678431, 0.537255, 0.470588, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 Label/constants/line_spacing = 3
 Label/constants/outline_size = 0
@@ -118,13 +176,25 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 16
-Label/fonts/font = ExtResource("8_6xqic")
+Label/fonts/font = null
 Label/styles/normal = SubResource("StyleBoxEmpty_wldl7")
 Panel/styles/panel = SubResource("StyleBoxTexture_4op23")
 
 [sub_resource type="LabelSettings" id="LabelSettings_83luj"]
-font_size = 20
-font_color = Color(0.443137, 0.364706, 0.352941, 1)
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxojy"]
+font_size = 32
+outline_size = 20
+outline_color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0s4h"]
+font_size = 32
+font_color = Color(0.835294, 0.709804, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_clr6o"]
+font_size = 32
+font_color = Color(0, 0.807843, 0.0980392, 1)
 
 [node name="scriptboard" type="Control"]
 layout_mode = 3
@@ -136,60 +206,103 @@ grow_vertical = 2
 script = ExtResource("1_x6avx")
 metadata/_edit_use_anchors_ = true
 
-[node name="Scriptboard" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
-texture = ExtResource("2_0gp0p")
-
 [node name="visualboard" type="GraphEdit" parent="."]
+custom_minimum_size = Vector2(636, 476)
 layout_mode = 1
-offset_left = 96.0
-offset_top = 96.0
-offset_right = 1248.0
-offset_bottom = 960.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_sluf2")
 right_disconnects = true
+scroll_offset = Vector2(-631.333, 0)
 use_snap = false
 panning_scheme = 1
-connection_lines_thickness = 4.0
+connection_lines_thickness = 8.0
 connection_lines_antialiased = false
 show_zoom_label = true
 minimap_enabled = false
+arrange_nodes_button_hidden = true
 script = ExtResource("3_06y3t")
 
 [node name="StartGraphNode" parent="visualboard" instance=ExtResource("8_u6msx")]
 layout_mode = 0
-offset_left = 128.0
-offset_top = 456.0
-offset_right = 445.0
-offset_bottom = 533.0
+offset_left = 360.0
+offset_top = 296.0
+offset_right = 675.0
+offset_bottom = 502.0
 mouse_filter = 1
 theme_override_constants/title_h_offset = 5
 theme_override_styles/frame = SubResource("StyleBoxFlat_70yyp")
 theme_override_styles/selected_frame = SubResource("StyleBoxFlat_kot5h")
-position_offset = Vector2(128, 456)
+position_offset = Vector2(-271.333, 296)
+
+[node name="card_spawn" type="Marker2D" parent="."]
+position = Vector2(656, 376)
+
+[node name="cl" type="CanvasLayer" parent="."]
+
+[node name="PlayButton" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -152.0
+offset_right = 656.0
+offset_bottom = -48.0
+grow_vertical = 0
+
+[node name="exit" type="Button" parent="PlayButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 104.0
+grow_vertical = 2
+theme = SubResource("Theme_5grrj")
+text = "EXIT"
+
+[node name="play" type="Button" parent="PlayButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 115.0
+offset_right = 459.0
+grow_vertical = 2
+theme = SubResource("Theme_akv6p")
+text = "SIMULATE"
 
 [node name="Buttons" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 1336.0
-offset_top = 424.0
-offset_right = 1632.0
-offset_bottom = 992.0
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -456.0
+grow_horizontal = 0
+grow_vertical = 2
 metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="Buttons"]
-layout_mode = 0
-offset_left = -32.0
-offset_top = -24.0
-offset_right = 312.0
-offset_bottom = 568.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_0b2rn")
 
 [node name="BoxContainer" type="BoxContainer" parent="Buttons/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
+offset_left = 24.0
+offset_top = 24.0
 offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 2
@@ -208,7 +321,7 @@ text = "INPUT"
 [node name="out__button" type="Button" parent="Buttons/Panel/BoxContainer/ButtonVert"]
 layout_mode = 2
 theme = ExtResource("2_po2hg")
-text = "OUTPUT"
+text = "OUTPUT "
 
 [node name="art__button" type="Button" parent="Buttons/Panel/BoxContainer/ButtonVert"]
 layout_mode = 2
@@ -348,38 +461,27 @@ grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayButton" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 1656.0
-offset_top = 976.0
-offset_right = 1896.0
-offset_bottom = 1016.0
-metadata/_edit_group_ = true
-
-[node name="PlayButton" type="Button" parent="PlayButton"]
+[node name="Titles" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_left = -936.0
+offset_top = 648.0
+offset_right = -24.0
+offset_bottom = -32.0
+grow_horizontal = 0
 grow_vertical = 2
-theme = SubResource("Theme_e2gdq")
-text = "Play"
-
-[node name="Titles" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 1296.0
-offset_top = 80.0
-offset_right = 1880.0
-offset_bottom = 392.0
+mouse_filter = 2
 theme = SubResource("Theme_p00ac")
-metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="Titles"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 352.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -389,8 +491,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 32.0
+offset_left = 16.0
+offset_top = 16.0
 offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 2
@@ -400,11 +502,80 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="card_spawn" type="Marker2D" parent="."]
-position = Vector2(656, 376)
+[node name="inps" type="Panel" parent="Titles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 216.0
+offset_right = -576.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="inps" type="Label" parent="Titles/inps"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 32.0
+text = "Inputs"
+label_settings = SubResource("LabelSettings_nxojy")
+
+[node name="inps_label" type="Label" parent="Titles/inps"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Something"
+label_settings = SubResource("LabelSettings_n0s4h")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="outs" type="Panel" parent="Titles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 312.0
+offset_right = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="outs" type="Label" parent="Titles/outs"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 32.0
+text = "Expected Output
+"
+label_settings = SubResource("LabelSettings_nxojy")
+
+[node name="outs_label" type="Label" parent="Titles/outs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Something"
+label_settings = SubResource("LabelSettings_clr6o")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="connection_request" from="visualboard" to="visualboard" method="_on_connection_request"]
 [connection signal="disconnection_request" from="visualboard" to="visualboard" method="_on_disconnection_request"]
+[connection signal="pressed" from="PlayButton/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PlayButton/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Buttons/Panel/BoxContainer/ButtonVert/inp_button" to="visualboard" method="_on_inp_button_pressed"]
 [connection signal="pressed" from="Buttons/Panel/BoxContainer/ButtonVert/out__button" to="visualboard" method="_on_out__button_pressed"]
 [connection signal="pressed" from="Buttons/Panel/BoxContainer/ButtonVert/art__button" to="visualboard" method="_on_art__button_pressed"]
@@ -412,4 +583,3 @@ position = Vector2(656, 376)
 [connection signal="pressed" from="Buttons/Panel/BoxContainer/ButtonVert/jumpif_button" to="visualboard" method="_on_jumpif_button_pressed"]
 [connection signal="pressed" from="Buttons/Panel/BoxContainer/ButtonVert/store_button" to="visualboard" method="_on_store_button_pressed"]
 [connection signal="pressed" from="Buttons/Panel/BoxContainer/ButtonVert/copy_button" to="visualboard" method="_on_copy_button_pressed"]
-[connection signal="pressed" from="PlayButton/PlayButton" to="." method="_on_play_button_pressed"]

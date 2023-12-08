@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvslwj5cmn8ys"]
+[gd_scene load_steps=4 format=3 uid="uid://dvslwj5cmn8ys"]
 
 [ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="1_803cb"]
 [ext_resource type="Script" path="res://scripts/GraphNodes/StoreToNode.gd" id="1_uwcsh"]
+[ext_resource type="PackedScene" uid="uid://db46y05e84yvy" path="res://bases/ScaleBase.tscn" id="3_tecrt"]
 
 [node name="StoreToNode" type="GraphNode"]
 tooltip_text = "Store the copy of the current box to the specified array index."
@@ -30,5 +31,7 @@ layout_mode = 2
 max_value = 5.0
 
 [node name="GraphCloseBase" parent="." instance=ExtResource("1_803cb")]
+
+[node name="ScaleBase" parent="." instance=ExtResource("3_tecrt")]
 
 [connection signal="value_changed" from="HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]

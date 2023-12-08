@@ -1,25 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://5hbuh76orv0h"]
+[gd_scene load_steps=2 format=3 uid="uid://5hbuh76orv0h"]
 
-[ext_resource type="PackedScene" uid="uid://giiq8bufe7m5" path="res://Main/playback.tscn" id="1_6bj70"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_xtr71"]
-[ext_resource type="PackedScene" uid="uid://5dr8f706fy3w" path="res://Main/scriptboard.tscn" id="2_pfhu8"]
 
-[node name="main" type="Node2D"]
-position = Vector2(1004, 857)
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1004.0
+offset_top = 857.0
+offset_right = 1004.0
+offset_bottom = 857.0
 script = ExtResource("1_xtr71")
-
-[node name="playback" parent="." instance=ExtResource("1_6bj70")]
-offset_left = -1004.0
-offset_top = -857.0
-offset_right = -1004.0
-offset_bottom = -857.0
-metadata/_edit_use_anchors_ = true
-
-[node name="scriptboard" parent="." instance=ExtResource("2_pfhu8")]
-offset_left = -1004.0
-offset_top = 227.0
-offset_right = -1004.0
-offset_bottom = 227.0
 
 [node name="MainCam" type="Camera2D" parent="."]
 position = Vector2(-44, 762)

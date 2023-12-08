@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://gto6e6y4sk8k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1sylt"]
-font_size = 32
+font_size = 64
 
 [node name="line" type="Label"]
 offset_right = 581.0

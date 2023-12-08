@@ -1,0 +1,125 @@
+[gd_scene load_steps=12 format=3 uid="uid://css5k5vklgmoe"]
+
+[ext_resource type="Material" uid="uid://mxlf80h8xwto" path="res://bases/minimal_ctr.tres" id="1_5casu"]
+[ext_resource type="Script" path="res://Menu/MainMenu.gd" id="1_ikxsm"]
+[ext_resource type="FontFile" uid="uid://dvvjrvyalyu53" path="res://assets/ThaleahFat.ttf" id="2_pnj8e"]
+[ext_resource type="FontFile" uid="uid://cpab8cal6odo7" path="res://assets/monogram.ttf" id="3_0kk1k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7jn7"]
+font = ExtResource("2_pnj8e")
+font_size = 256
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q77y7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uli6p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msd0g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7vt87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k22wh"]
+
+[sub_resource type="Theme" id="Theme_qaait"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.376471, 0.521569, 0.00784314, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 2
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 128
+Button/fonts/font = ExtResource("3_0kk1k")
+Button/styles/disabled = SubResource("StyleBoxEmpty_q77y7")
+Button/styles/focus = SubResource("StyleBoxEmpty_uli6p")
+Button/styles/hover = SubResource("StyleBoxEmpty_msd0g")
+Button/styles/normal = SubResource("StyleBoxEmpty_7vt87")
+Button/styles/pressed = SubResource("StyleBoxEmpty_k22wh")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ikxsm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("1_5casu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 144.0
+offset_top = 128.0
+offset_right = -139.0
+offset_bottom = -561.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PsuedoCards"
+label_settings = SubResource("LabelSettings_a7jn7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 378.0
+offset_top = 574.0
+offset_right = -400.0
+offset_bottom = -222.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qaait")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="start" type="Button" parent="menu/VBoxContainer"]
+layout_mode = 2
+text = "START"
+
+[node name="exit" type="Button" parent="menu/VBoxContainer"]
+layout_mode = 2
+text = "EXIT
+"
+
+[connection signal="pressed" from="menu/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/exit" to="." method="_on_exit_pressed"]

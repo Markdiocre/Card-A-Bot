@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb0fwe7jyox65"]
+[gd_scene load_steps=3 format=3 uid="uid://cb0fwe7jyox65"]
 
 [ext_resource type="Script" path="res://scripts/GraphNodes/StartGraphNode.gd" id="1_v1yy0"]
+[ext_resource type="PackedScene" uid="uid://db46y05e84yvy" path="res://bases/ScaleBase.tscn" id="2_hvqtq"]
 
 [node name="StartGraphNode" type="GraphNode"]
+offset_right = 251.0
+offset_bottom = 70.0
 tooltip_text = "The flow of your algorithm will start from here"
 title = "START"
 slot/0/left_enabled = false
@@ -21,3 +24,6 @@ layout_mode = 2
 text = "This is the start of the algorithm"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ScaleBase" parent="." instance=ExtResource("2_hvqtq")]

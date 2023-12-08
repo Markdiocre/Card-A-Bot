@@ -1,6 +1,7 @@
 {
-	"title":"Jump for the better!",
-	"problem":"Just like the last time but use the jump card this time to make loops!",
+	"level":2,
+	"title":"Now let's jump!",
+	"problem":"Just like the last time but with the JUMP card",
 	"inputs":[1,2,3],
 	"outputs":[1,2,3],
 	"buttons":{

@@ -1,5 +1,7 @@
 extends GraphNode
 
+@onready var main = get_tree().root.get_node("new_main")
+
 var card_type= "jumpif"
 var connection_port_TRUE_bool = false
 var connection_port_FALSE_bool = false
@@ -27,6 +29,7 @@ func _on_spin_box_value_changed(value):
 	spin_value = int(value)
 
 func perform_operation():
+	MM.emit_signal("set_curr_card","JUMP IF")
 	GT.start()
 	await GT.timeout
 	MM.do_insert_line("Jump If card process is met. Checking connections... [0/2]","normal")
@@ -46,32 +49,32 @@ func perform_operation():
 				0:
 					GT.start()
 					await GT.timeout
-					MM.do_insert_line("Is " + str(MM.current_box_value) + " equal to array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
-					if MM.current_box_value == spin_value:
+					MM.do_insert_line("Is " + str(main.current_box_value) + " equal to array index " + str(spin_value) + " with the value of " + str(main.ARRAY_VALS[spin_value]) + " ?","normal")
+					if main.current_box_value == spin_value:
 						is_condition_true = true
 				1:
 					GT.start()
 					await GT.timeout
-					MM.do_insert_line("Is " + str(MM.current_box_value) + " less than the array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
-					if MM.current_box_value < spin_value:
+					MM.do_insert_line("Is " + str(main.current_box_value) + " less than the array index " + str(spin_value) + " with the value of " + str(main.ARRAY_VALS[spin_value]) + " ?","normal")
+					if main.current_box_value < spin_value:
 						is_condition_true = true
 				2:
 					GT.start()
 					await GT.timeout
-					MM.do_insert_line("Is " + str(MM.current_box_value) + " greater than array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
-					if MM.current_box_value > spin_value:
+					MM.do_insert_line("Is " + str(main.current_box_value) + " greater than array index " + str(spin_value) + " with the value of " + str(main.ARRAY_VALS[spin_value]) + " ?","normal")
+					if main.current_box_value > spin_value:
 						is_condition_true = true
 				3:
 					GT.start()
 					await GT.timeout
-					MM.do_insert_line("Is " + str(MM.current_box_value) + " less than or equal to array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
-					if MM.current_box_value <= spin_value:
+					MM.do_insert_line("Is " + str(main.current_box_value) + " less than or equal to array index " + str(spin_value) + " with the value of " + str(main.ARRAY_VALS[spin_value]) + " ?","normal")
+					if main.current_box_value <= spin_value:
 						is_condition_true = true
 				4:
 					GT.start()
 					await GT.timeout
-					MM.do_insert_line("Is " + str(MM.current_box_value) + " greater than or equal to array index " + str(spin_value) + " with the value of " + MM.ARRAY_VALS[spin_value] + " ?","normal")
-					if MM.current_box_value >= spin_value:
+					MM.do_insert_line("Is " + str(main.current_box_value) + " greater than or equal to array index " + str(spin_value) + " with the value of " + str(main.ARRAY_VALS[spin_value]) + " ?","normal")
+					if main.current_box_value >= spin_value:
 						is_condition_true = true
 						
 			if is_condition_true:
@@ -79,12 +82,12 @@ func perform_operation():
 				GT.start()
 				await GT.timeout
 				MM.do_insert_line("Condition is true. Proceeding to THEN connection...","normal")
-				MM.process_is_done()
+				main.process_is_done()
 			else:
 				GT.start()
 				await GT.timeout
 				MM.do_insert_line("Condition is true. Proceeding to ELSE connection...","normal")
-				MM.process_is_done(1)
+				main.process_is_done(1)
 		else:
 			GT.start()
 			await GT.timeout

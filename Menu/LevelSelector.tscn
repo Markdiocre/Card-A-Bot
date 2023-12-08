@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6v7oq3qgjggc"]
+
+[ext_resource type="Script" path="res://Menu/LevelSelector.gd" id="1_8383t"]
+[ext_resource type="Material" uid="uid://mxlf80h8xwto" path="res://bases/minimal_ctr.tres" id="1_h1b24"]
+[ext_resource type="FontFile" uid="uid://dvvjrvyalyu53" path="res://assets/ThaleahFat.ttf" id="2_a54mx"]
+[ext_resource type="Texture2D" uid="uid://8om0vti5t3k3" path="res://assets/playback2.png" id="4_qemt3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b3ukf"]
+texture = ExtResource("4_qemt3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(432, 432, 144, 144)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt646"]
+
+[sub_resource type="Theme" id="Theme_7bp43"]
+GridContainer/constants/h_separation = 120
+GridContainer/constants/v_separation = 200
+HFlowContainer/constants/h_separation = 300
+HFlowContainer/constants/v_separation = 4
+Panel/styles/panel = SubResource("StyleBoxTexture_b3ukf")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_dt646")
+
+[sub_resource type="LabelSettings" id="LabelSettings_crq8u"]
+font = ExtResource("2_a54mx")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_ss3j8"]
+font_size = 64
+
+[node name="LevelSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8383t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("1_h1b24")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="levels" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 48.0
+offset_top = 224.0
+offset_right = -61.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7bp43")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="levels"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="grid" type="GridContainer" parent="levels/ScrollContainer"]
+layout_mode = 2
+columns = 7
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_left = 43.0
+offset_top = 32.0
+offset_right = 619.0
+offset_bottom = 153.0
+text = "PsuedoCards"
+label_settings = SubResource("LabelSettings_crq8u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer2"]
+offset_left = 41.0
+offset_top = 96.0
+offset_right = 745.0
+offset_bottom = 217.0
+text = "Level Select"
+label_settings = SubResource("LabelSettings_ss3j8")
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer2"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 40.0
+offset_right = -38.0
+offset_bottom = 122.0
+grow_horizontal = 0
+
+[node name="exit" type="Button" parent="CanvasLayer2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0.729412, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "EXIT"
+
+[connection signal="pressed" from="CanvasLayer2/Control/exit" to="." method="_on_exit_pressed"]

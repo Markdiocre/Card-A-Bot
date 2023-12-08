@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://o6eh6uefdhmk"]
+
+[ext_resource type="Script" path="res://Main/new_main.gd" id="1_awms7"]
+[ext_resource type="PackedScene" uid="uid://5dr8f706fy3w" path="res://Main/scriptboard.tscn" id="1_xdauo"]
+[ext_resource type="PackedScene" uid="uid://giiq8bufe7m5" path="res://Main/playback.tscn" id="2_8id1t"]
+
+[node name="new_main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_awms7")
+
+[node name="playback" parent="." instance=ExtResource("2_8id1t")]
+layout_mode = 1
+
+[node name="scriptboard" parent="." instance=ExtResource("1_xdauo")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.186458
+anchor_top = 0.639815
+anchor_right = 0.813542
+anchor_bottom = 1.63981
+offset_left = 358.0
+offset_top = 389.0
+offset_right = 358.0
+offset_bottom = 389.0
+
+[node name="MainCam" type="Camera2D" parent="."]
+position = Vector2(955, 1629)
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true

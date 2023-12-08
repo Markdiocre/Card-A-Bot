@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Card-A-Bot"
+config/name="PsuedoCards"
 config/tags=PackedStringArray("thesis")
-run/main_scene="res://Main/main.tscn"
+run/main_scene="res://Menu/MainMenu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,21 +22,20 @@ LM="*res://scripts/LevelManager.gd"
 MM="*res://scripts/MainManager.gd"
 SceneTransition="*res://bases/SceneTransition.tscn"
 GT="*res://bases/global_timer.tscn"
+SL="*res://scripts/SaveLoad.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
-window/size/resizable=false
 window/size/window_width_override=1920
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [gui]
 
-theme/custom_font="res://assets/PixeloidSans-mLxMm.ttf"
-theme/default_font_antialiasing=0
+theme/custom_font="res://assets/monogram.ttf"
 
 [input]
 
@@ -51,3 +50,4 @@ click={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

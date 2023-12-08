@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://db46y05e84yvy"]
+
+[ext_resource type="Script" path="res://bases/ScaleBase.gd" id="1_cgj7u"]
+
+[node name="ScaleBase" type="Node"]
+script = ExtResource("1_cgj7u")

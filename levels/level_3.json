@@ -1,17 +1,18 @@
 {
-	"title":"Shuffle shuffle",
-	"problem":"Swap the values of every 2 numbers",
+	"level":3,
+	"title":"Manipulation via Arithmetic",
+	"problem":"Output the square of each input",
 	"inputs":[1,2,3,4],
-	"outputs":[2,1,4,3],
+	"outputs":[1,4,9,16],
 	"buttons":{
 		"inp":{
-			"count":2
+			"count":1
 		},
 		"out":{
-			"count":2
+			"count":1
 		},
 		"art":{
-			"count":0
+			"count":1
 		},
 		"jump":{
 			"count":1
@@ -20,10 +21,10 @@
 			"count":0
 		},
 		"store":{
-			"count":2
+			"count":1
 		},
 		"copy":{
-			"count":2
+			"count":0
 		}
 	}
 }

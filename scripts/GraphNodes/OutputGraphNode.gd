@@ -1,5 +1,7 @@
 extends GraphNode
 
+@onready var main = get_tree().root.get_node("new_main")
+
 var card_type = "out"
 var connection_count = 0
 
@@ -8,19 +10,21 @@ func _ready():
 	set_slot(0,true,0,Color(Color.WHITE),true,0,Color(Color.GREEN))
 
 func perform_operation():
+	MM.emit_signal("set_curr_card","OUTPUT")
 	GT.start()
 	await GT.timeout	
 	MM.do_insert_line("Sending current value to output...", "normal")
-	if MM.current_box_value != null:
+	main.OUTPUTS_SUB.append(main.current_box_value)
+	if main.current_box_value != null:
 		GT.start()
 		await GT.timeout	
 		MM.do_insert_line("Checking output value...", "normal")
-		if MM.current_box_value == MM.OUTPUTS[MM.output_counter]:
+		if main.current_box_value == main.OUTPUTS[main.output_counter]:
 			GT.start()
 			await GT.timeout	
 			MM.do_insert_line("Output value is correct! Proceeding...", "success")
-			MM.output_counter += 1
-			MM.process_is_done()
+			main.output_counter += 1
+			main.process_is_done()
 		else:
 			GT.start()
 			await GT.timeout	

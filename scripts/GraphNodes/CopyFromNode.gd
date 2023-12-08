@@ -1,5 +1,7 @@
 extends GraphNode
 
+@onready var main = get_tree().root.get_node("new_main")
+
 var card_type = "copy"
 var connection_count = 0
 
@@ -10,15 +12,16 @@ func _ready():
 	set_slot(0,true,0,Color(Color.WHITE),true,0,Color(Color.GREEN))
 
 func perform_operation():
+	MM.emit_signal("set_curr_card", "COPY FROM")
 	print("Copying value from index " + str(index_value))
 	GT.start()
 	await GT.timeout
 	MM.do_insert_line("Copying value from index "+ str(index_value), "normal")
-	if MM.ARRAY_VALS[index_value] != null:
-		MM.current_box_value = MM.ARRAY_VALS[index_value]
-		print("Current value now is " + str(MM.current_box_value))
-		MM.do_insert_line("Current value now is " + str(MM.current_box_value), "normal")
-		MM.process_is_done()
+	if main.ARRAY_VALS[index_value] != null:
+		main.current_box_value = main.ARRAY_VALS[index_value]
+		print("Current value now is " + str(main.current_box_value))
+		MM.do_insert_line("Current value now is " + str(main.current_box_value), "normal")
+		main.process_is_done()
 	else:
 		GT.start()
 		await GT.timeout

@@ -1,5 +1,7 @@
 extends GraphEdit
 
+@onready var main = get_parent().get_parent()
+
 var inp = preload("res://instantiables/GraphNodes/InputGraphNode.tscn")
 var out = preload("res://instantiables/GraphNodes/OutputGraphNode.tscn")
 var art = preload("res://instantiables/GraphNodes/ArithmeticNode.tscn")
@@ -36,66 +38,66 @@ func _ready():
 func close_card(from):
 	match from.card_type:
 		"inp":
-			MM.BUTTONS.inp.count += 1
+			main.BUTTONS.inp.count += 1
 		"out":
-			MM.BUTTONS.out.count += 1
+			main.BUTTONS.out.count += 1
 		"art":
-			MM.BUTTONS.art.count += 1
+			main.BUTTONS.art.count += 1
 		"jump":
-			MM.BUTTONS.jump.count += 1
+			main.BUTTONS.jump.count += 1
 		"jumpif":
-			MM.BUTTONS.jumpif.count += 1
+			main.BUTTONS.jumpif.count += 1
 		"store":
-			MM.BUTTONS.store.count += 1
+			main.BUTTONS.store.count += 1
 		"copy":
-			MM.BUTTONS.copy.count += 1
+			main.BUTTONS.copy.count += 1
 	
 	set_labels()
 
 func set_labels():
-	inp_label.text = str(MM.BUTTONS.inp.count)
-	out_label.text = str(MM.BUTTONS.out.count)
-	art_label.text = str(MM.BUTTONS.art.count)
-	jump_label.text = str(MM.BUTTONS.jump.count)
-	jumpif_label.text = str(MM.BUTTONS.jumpif.count)
-	store_label.text = str(MM.BUTTONS.store.count)
-	copy_label.text = str(MM.BUTTONS.copy.count)
+	inp_label.text = str(main.BUTTONS.inp.count)
+	out_label.text = str(main.BUTTONS.out.count)
+	art_label.text = str(main.BUTTONS.art.count)
+	jump_label.text = str(main.BUTTONS.jump.count)
+	jumpif_label.text = str(main.BUTTONS.jumpif.count)
+	store_label.text = str(main.BUTTONS.store.count)
+	copy_label.text = str(main.BUTTONS.copy.count)
 	
-	if MM.BUTTONS.inp.count <= 0:
+	if main.BUTTONS.inp.count <= 0:
 		inp_button.disabled = true
 	else:
 		inp_button.disabled = false
 		
 		
-	if MM.BUTTONS.out.count <= 0:
+	if main.BUTTONS.out.count <= 0:
 		out__button.disabled = true
 	else:
 		out__button.disabled = false
 		
 		
-	if MM.BUTTONS.art.count <= 0:
+	if main.BUTTONS.art.count <= 0:
 		art__button.disabled = true
 	else:
 		art__button.disabled = false
 		
 		
-	if MM.BUTTONS.jump.count <= 0:
+	if main.BUTTONS.jump.count <= 0:
 		jump_button.disabled = true
 	else:
 		jump_button.disabled = false
 		
 		
-	if MM.BUTTONS.jumpif.count <= 0:
+	if main.BUTTONS.jumpif.count <= 0:
 		jumpif_button.disabled = true
 	else:
 		jumpif_button.disabled = false
 		
-	if MM.BUTTONS.store.count <= 0:
+	if main.BUTTONS.store.count <= 0:
 		store_button.disabled = true
 	else:
 		store_button.disabled = false
 	
-	if MM.BUTTONS.copy.count <= 0:
+	if main.BUTTONS.copy.count <= 0:
 		copy_button.disabled = true
 	else:
 		copy_button.disabled = false
@@ -106,32 +108,32 @@ func summon(type: String):
 	match type:
 		"inp":
 			temp = inp.instantiate()
-			MM.BUTTONS.inp.count -= 1
+			main.BUTTONS.inp.count -= 1
 		"out":
 			temp = out.instantiate()
-			MM.BUTTONS.out.count -= 1
+			main.BUTTONS.out.count -= 1
 			
 		"art":
 			temp = art.instantiate()
-			MM.BUTTONS.art.count -= 1
+			main.BUTTONS.art.count -= 1
 			
 		"jump":
 			temp = jump.instantiate()
-			MM.BUTTONS.jump.count -= 1
+			main.BUTTONS.jump.count -= 1
 			
 		"jumpif":
 			temp = jumpif.instantiate()
-			MM.BUTTONS.jumpif.count -= 1
+			main.BUTTONS.jumpif.count -= 1
 			
 		"store":
 			temp = store.instantiate()
-			MM.BUTTONS.store.count -= 1
+			main.BUTTONS.store.count -= 1
 			
 		"copy":
 			temp = copy.instantiate()
-			MM.BUTTONS.copy.count -= 1
+			main.BUTTONS.copy.count -= 1
 	
-	temp.position = card_spawn.position
+	temp.position_offset = card_spawn.position
 	
 	for node in get_children():
 		node.selected = false
@@ -241,6 +243,7 @@ func _on_out__button_pressed():
 
 
 func _on_disconnection_request(from_node, from_port, to_node, to_port):
+	print(from_node, from_port, to_node, to_port)
 	var from_node_instance = get_node(""+from_node)
 	
 	if from_node_instance.card_type == "jumpif" and from_port == 0:
