@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb0fwe7jyox65"]
+[gd_scene load_steps=4 format=3 uid="uid://cb0fwe7jyox65"]
 
 [ext_resource type="Script" path="res://scripts/GraphNodes/StartGraphNode.gd" id="1_v1yy0"]
 [ext_resource type="PackedScene" uid="uid://db46y05e84yvy" path="res://bases/ScaleBase.tscn" id="2_hvqtq"]
+[ext_resource type="PackedScene" uid="uid://6u1aacv7dmvb" path="res://bases/PickUpSoundBase.tscn" id="3_bhg1a"]
 
 [node name="StartGraphNode" type="GraphNode"]
 offset_right = 251.0
@@ -27,3 +28,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ScaleBase" parent="." instance=ExtResource("2_hvqtq")]
+
+[node name="PickUpSoundBase" parent="." instance=ExtResource("3_bhg1a")]
+
+[connection signal="raise_request" from="." to="PickUpSoundBase" method="_on_raise_request"]

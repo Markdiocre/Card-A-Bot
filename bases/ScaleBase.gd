@@ -1,6 +1,5 @@
 extends Node
 
 func _ready():
-	get_parent().scale = Vector2(2, 2)
-	if ["Android", "iOS"].has(OS.get_name()):
+	if str(OS.get_name()) in ["Android", "iOS"]:
 		get_parent().set_scale(Vector2(2, 2))

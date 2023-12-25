@@ -26,3 +26,4 @@ func perform_operation():
 		GT.start()
 		await GT.timeout	
 		MM.do_print_error("There are no more inputs")
+

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4mjvxbrpb1j5"]
+[gd_scene load_steps=5 format=3 uid="uid://d4mjvxbrpb1j5"]
 
 [ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="1_ejx4g"]
 [ext_resource type="Script" path="res://scripts/GraphNodes/JumpGraphNode.gd" id="1_m4gkt"]
 [ext_resource type="PackedScene" uid="uid://db46y05e84yvy" path="res://bases/ScaleBase.tscn" id="3_arf4p"]
+[ext_resource type="PackedScene" uid="uid://6u1aacv7dmvb" path="res://bases/PickUpSoundBase.tscn" id="4_uqk0a"]
 
 [node name="JumpGraphNode" type="GraphNode"]
 offset_right = 331.0
@@ -31,3 +32,7 @@ autowrap_mode = 3
 [node name="GraphCloseBase" parent="." instance=ExtResource("1_ejx4g")]
 
 [node name="ScaleBase" parent="." instance=ExtResource("3_arf4p")]
+
+[node name="PickUpSoundBase" parent="." instance=ExtResource("4_uqk0a")]
+
+[connection signal="raise_request" from="." to="PickUpSoundBase" method="_on_raise_request"]

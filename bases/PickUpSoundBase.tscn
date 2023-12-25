@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://6u1aacv7dmvb"]
+
+[ext_resource type="Script" path="res://bases/PickUpSoundBase.gd" id="1_55nmf"]
+[ext_resource type="AudioStream" uid="uid://bqo1nkjmqm86t" path="res://sounds/card_pickup.mp3" id="1_pivbj"]
+
+[node name="PickUpSoundBase" type="AudioStreamPlayer"]
+stream = ExtResource("1_pivbj")
+script = ExtResource("1_55nmf")

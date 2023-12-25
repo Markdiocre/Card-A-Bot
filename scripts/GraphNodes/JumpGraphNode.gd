@@ -16,3 +16,5 @@ func perform_operation():
 	MM.do_insert_line("Jump Card process is met. Jumping to specified card...", "normal")
 	print("Jumping to next node")
 	main.process_is_done()
+
+

@@ -26,8 +26,6 @@ func _on_spin_box_value_changed(value):
 
 func current_value():
 	MM.do_insert_line("Current value is now: " + str(main.current_box_value), "normal")
-	
-	
 
 func perform_operation():
 	MM.emit_signal("set_curr_card","ARITHMETIC")

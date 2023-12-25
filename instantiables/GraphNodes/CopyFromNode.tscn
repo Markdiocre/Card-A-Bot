@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://o3onapjb3crt"]
+[gd_scene load_steps=5 format=3 uid="uid://o3onapjb3crt"]
 
 [ext_resource type="Script" path="res://scripts/GraphNodes/CopyFromNode.gd" id="1_h8puh"]
 [ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="2_f8b0l"]
 [ext_resource type="PackedScene" uid="uid://db46y05e84yvy" path="res://bases/ScaleBase.tscn" id="3_8di8h"]
+[ext_resource type="PackedScene" uid="uid://6u1aacv7dmvb" path="res://bases/PickUpSoundBase.tscn" id="4_xxjar"]
 
 [node name="CopyFromNode" type="GraphNode"]
 tooltip_text = "Copy value from the specified index. The copied value will be the value of the current box."
@@ -34,4 +35,7 @@ max_value = 6.0
 
 [node name="ScaleBase" parent="." instance=ExtResource("3_8di8h")]
 
+[node name="PickUpSoundBase" parent="." instance=ExtResource("4_xxjar")]
+
+[connection signal="raise_request" from="." to="PickUpSoundBase" method="_on_raise_request"]
 [connection signal="value_changed" from="HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
