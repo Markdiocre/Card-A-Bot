@@ -9,6 +9,9 @@ extends Control
 @onready var inps_label = $Titles/inps/inps_label
 @onready var outs_label = $Titles/outs/outs_label
 
+@onready var titles = $Titles
+@onready var buttons = $Buttons
+
 
 func _ready():
 	MM.set_level_desc.connect(set_desc)
@@ -25,3 +28,11 @@ func _on_play_pressed():
 
 func _on_exit_pressed():
 	get_tree().change_scene_to_file("res://Menu/LevelSelector.tscn")
+
+func _on_check_button_toggled(button_pressed):
+	if button_pressed:
+		buttons.hide()
+		titles.hide()
+	else:
+		buttons.show()
+		titles.show()
