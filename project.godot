@@ -38,6 +38,10 @@ window/size/window_width_override=1920
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="D:/4th year 1st sem/thesis recordings/Psuedocards.avi"
+
 [gui]
 
 theme/custom_font="res://assets/monogram.ttf"
