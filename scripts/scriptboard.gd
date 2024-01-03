@@ -18,8 +18,8 @@ func _ready():
 	
 func set_desc(desc,inputs,outputs):
 	level_desc.text = desc
-	inps_label.text = str(inputs)
-	outs_label.text = str(outputs)
+	inps_label.text = ",".join(inputs)
+	outs_label.text = ",".join(outputs)
 
 func _on_play_pressed():
 	SceneTransition.do_transition()

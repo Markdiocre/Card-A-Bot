@@ -1,4 +1,6 @@
 extends AudioStreamPlayer
 
-func _on_raise_request():
+
+
+func _on_close_request():
 	play()

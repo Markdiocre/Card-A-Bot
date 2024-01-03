@@ -8,7 +8,6 @@
 [node name="JumpIfGraphNode" type="GraphNode"]
 offset_right = 416.0
 offset_bottom = 132.0
-tooltip_text = "This card is used to connect to a card with a previous connection but with conditions. If a certain condition is met, it will continue on the THEN clause, if not it will go trough the ELSE clause"
 title = "JUMP IF"
 show_close = true
 slot/0/left_enabled = false

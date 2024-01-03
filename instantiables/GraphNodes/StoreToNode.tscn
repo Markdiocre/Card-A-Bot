@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://6u1aacv7dmvb" path="res://bases/PickUpSoundBase.tscn" id="4_ahbd7"]
 
 [node name="StoreToNode" type="GraphNode"]
-tooltip_text = "Store the copy of the current box to the specified array index."
 title = "STORE"
 show_close = true
 slot/0/left_enabled = false

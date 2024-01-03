@@ -25,6 +25,12 @@ extends Control
 @onready var inps = $trackers/Panel/inps/inps
 @onready var outs = $trackers/Panel/outs/outs
 
+#sounds
+@onready var line_insert = $sounds/line_insert
+@onready var win = $sounds/win
+@onready var wrong = $sounds/wrong
+
+
 var line = preload("res://instantiables/line.tscn")
 
 
@@ -63,6 +69,8 @@ func program_success():
 	win_message.text = win_messages[randi_range(0, win_messages.size()-1)]
 	curr_card.text = "COMPLETED"
 	curr_value.text = "COMPLETED"
+	win.play()
+	
 
 func update_arrays():
 	arr_0.text = str(main.ARRAY_VALS[0])
@@ -97,10 +105,11 @@ func insert_line(message, type):
 			new_line.set("custom_colors/font_color", Color.YELLOW)
 	
 	v_box_container.add_child(new_line)
+	line_insert.play()
 	update_arrays()
 	curr_value.text = str(main.current_box_value)
-	inps.text = str(main.INPUTS_ACQ)
-	outs.text = str(main.OUTPUTS_SUB)
+	inps.text = ",".join(main.INPUTS_ACQ)
+	outs.text = ",".join(main.OUTPUTS_SUB)
 	await get_tree().process_frame
 	scroll_container.scroll_vertical = scrollbar.max_value
 	
@@ -110,6 +119,7 @@ func display_error_message(message: String):
 	close_button.text = button_messages[randi_range(0, button_messages.size()-1)]
 	error_ui.show()
 	error_message.text = message
+	wrong.play()
 
 func _on_close_button_pressed():
 	error_ui.hide()

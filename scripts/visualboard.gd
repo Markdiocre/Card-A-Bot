@@ -28,6 +28,12 @@ var copy = preload("res://instantiables/GraphNodes/CopyFromNode.tscn")
 @onready var store_label = $"../Buttons/Panel/BoxContainer/CounterVert/store_panel/store_label"
 @onready var copy_label = $"../Buttons/Panel/BoxContainer/CounterVert/copy_panel/copy_label"
 
+#Sounds
+@onready var connect_card = $"../sounds/connect_card"
+@onready var delete_sound_base = $"../sounds/DeleteSoundBase"
+@onready var spawn_card = $"../sounds/spawn_card"
+@onready var disconnect_card = $"../sounds/disconnect_card"
+
 
 func _ready():
 	add_valid_connection_type(1,0)
@@ -53,6 +59,8 @@ func close_card(from):
 			main.BUTTONS.copy.count += 1
 	
 	set_labels()
+	delete_sound_base.play()
+	
 
 func set_labels():
 	inp_label.text = str(main.BUTTONS.inp.count)
@@ -143,6 +151,7 @@ func summon(type: String):
 	
 	add_child(temp)
 	set_labels()
+	spawn_card.play()
 
 func _on_inp_button_pressed():
 	summon("inp")
@@ -232,6 +241,8 @@ func _on_connection_request(from_node, from_port, to_node, to_port):
 	
 	if allowed:
 		connect_node(from_node,from_port,to_node,to_port)
+		connect_card.play()
+		
 	
 	print(get_connection_list())
 	
@@ -254,6 +265,7 @@ func _on_disconnection_request(from_node, from_port, to_node, to_port):
 		from_node_instance.connection_count = 0
 	
 	disconnect_node(from_node,from_port,to_node,to_port)
+	disconnect_card.play()
 
 
 func _on_jump_button_pressed():

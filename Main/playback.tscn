@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://giiq8bufe7m5"]
+[gd_scene load_steps=42 format=3 uid="uid://giiq8bufe7m5"]
 
 [ext_resource type="Material" uid="uid://mxlf80h8xwto" path="res://bases/minimal_ctr.tres" id="1_3lj63"]
 [ext_resource type="Script" path="res://Main/playback.gd" id="1_113ac"]
@@ -10,6 +10,9 @@
 [ext_resource type="LabelSettings" uid="uid://drar8ke7yykd" path="res://bases/themes/arrays.tres" id="6_pjeuy"]
 [ext_resource type="Texture2D" uid="uid://bkx2au1u2mbqo" path="res://assets/playback/warning.png" id="7_tnras"]
 [ext_resource type="Texture2D" uid="uid://8yjemrutqvmv" path="res://assets/playback/trophy.png" id="8_o7oft"]
+[ext_resource type="AudioStream" uid="uid://g7gvydlesmqa" path="res://sounds/line_insert.wav" id="11_7q38x"]
+[ext_resource type="AudioStream" uid="uid://cu0jr6epw5waj" path="res://sounds/Win.wav" id="12_u3rs4"]
+[ext_resource type="AudioStream" uid="uid://bdeuk667rkj3f" path="res://sounds/wrong.wav" id="13_jq6mb"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_6tbo6"]
 
@@ -785,6 +788,17 @@ text = "EXAMPLE"
 label_settings = SubResource("LabelSettings_ft7io")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="sounds" type="Node2D" parent="."]
+
+[node name="line_insert" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("11_7q38x")
+
+[node name="win" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("12_u3rs4")
+
+[node name="wrong" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("13_jq6mb")
 
 [connection signal="pressed" from="cmd/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="errorUI/Panel/close_button" to="." method="_on_close_button_pressed"]

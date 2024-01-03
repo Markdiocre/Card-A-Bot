@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bde85067cbwpd"]
+[gd_scene load_steps=7 format=3 uid="uid://bde85067cbwpd"]
 
 [ext_resource type="Script" path="res://scripts/GraphNodes/ArithmeticNode.gd" id="1_6fkid"]
 [ext_resource type="PackedScene" uid="uid://da6p2av28ga8g" path="res://bases/GraphCloseBase.tscn" id="2_ha7yt"]
 [ext_resource type="PackedScene" uid="uid://db46y05e84yvy" path="res://bases/ScaleBase.tscn" id="3_rsxnp"]
 [ext_resource type="PackedScene" uid="uid://6u1aacv7dmvb" path="res://bases/PickUpSoundBase.tscn" id="4_oxkyd"]
+[ext_resource type="PackedScene" uid="uid://dnlid3p0w6inj" path="res://bases/DeleteSoundBase.tscn" id="5_5tc8o"]
+[ext_resource type="Script" path="res://bases/DeleteSoundBase.gd" id="6_2cxtt"]
 
 [node name="ArithmeticNode" type="GraphNode"]
-tooltip_text = "Perform arithmetic operation to the current box's value. against the specified index of the array."
 title = "ARITHMETIC"
 show_close = true
 slot/0/left_enabled = false
@@ -43,7 +44,7 @@ popup/item_4/id = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "by value of index"
+text = " by value of index "
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -55,6 +56,10 @@ max_value = 5.0
 
 [node name="PickUpSoundBase" parent="." instance=ExtResource("4_oxkyd")]
 
+[node name="DeleteSoundBase" parent="." instance=ExtResource("5_5tc8o")]
+script = ExtResource("6_2cxtt")
+
+[connection signal="close_request" from="." to="DeleteSoundBase" method="_on_close_request"]
 [connection signal="raise_request" from="." to="PickUpSoundBase" method="_on_raise_request"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]

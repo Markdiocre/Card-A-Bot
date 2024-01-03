@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnlid3p0w6inj"]
+
+[ext_resource type="AudioStream" uid="uid://bc3f6kqnoeikm" path="res://sounds/delete_card.wav" id="1_w3eb1"]
+
+[node name="DeleteSoundBase" type="AudioStreamPlayer"]
+stream = ExtResource("1_w3eb1")

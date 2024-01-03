@@ -8,7 +8,6 @@
 [node name="InputGraphNode" type="GraphNode"]
 offset_right = 245.0
 offset_bottom = 123.0
-tooltip_text = "Accept and input and make it the current value"
 title = "INPUT"
 show_close = true
 slot/0/left_enabled = false
