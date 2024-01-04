@@ -5,7 +5,7 @@ extends Control
 @onready var button_vert = $Buttons/Panel/BoxContainer/ButtonVert
 @onready var counter_vert = $Buttons/Panel/BoxContainer/CounterVert
 #@onready var visualboard = $visualboard
-@onready var level_desc = $Titles/Panel/level_desc
+@onready var level_desc = $Titles/Panel/sc/level_desc
 @onready var inps_label = $Titles/inps/inps_label
 @onready var outs_label = $Titles/outs/outs_label
 

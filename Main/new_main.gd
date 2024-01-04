@@ -48,6 +48,13 @@ var is_carrying_a_box = false
 var current_box_value
 var is_the_end_card = false
 
+
+func if_process(card_name ,port):
+	for link in visualboard.get_connection_list():
+		if link.from == card_name and link.from_port == port:
+			current_graph = link
+			process_is_done()
+	
 func set_state(state):
 	current_game_state = state
 
@@ -92,8 +99,8 @@ func _physics_process(_delta):
 #	emit_signal("insert_line", message, type)
 	
 
-func get_this_connection(card_name: String, port = 0):
-	print("Getting connection of " + card_name)
+func get_this_connection(card_name: String, port):
+	print("Getting connection of " + card_name + " From port " + str(port))
 	var card_exist = false
 	for link in visualboard.get_connection_list():
 		if link.from == card_name and link.from_port == port:
@@ -187,6 +194,7 @@ func _ready():
 	go_to_scriptboard()
 	instantiate_level(LM.current_level)
 	MM.error_message_closed.connect(handle_close_message)
+	MM.get_connection_from_if.connect(if_process)	
 
 func go_to_playback():
 	main_cam.global_position = Vector2(playback.global_position.x  +  (get_viewport_rect().size.x / 2), playback.global_position.y +  (get_viewport_rect().size.y/ 2))

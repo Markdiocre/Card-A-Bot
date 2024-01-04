@@ -112,8 +112,6 @@ func insert_line(message, type):
 	outs.text = ",".join(main.OUTPUTS_SUB)
 	await get_tree().process_frame
 	scroll_container.scroll_vertical = scrollbar.max_value
-	
-	
 
 func display_error_message(message: String):
 	close_button.text = button_messages[randi_range(0, button_messages.size()-1)]

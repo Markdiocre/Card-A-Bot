@@ -1,0 +1,30 @@
+{
+	"level": 9,
+	"title":"The greatest of em all",
+	"problem":"Output the largest number from the set of numbers",
+	"inputs":[44,22,16,75,34,89],
+	"outputs":[89],
+	"buttons":{
+		"inp":{
+			"count":5
+		},
+		"out":{
+			"count":5
+		},
+		"art":{
+			"count":5
+		},
+		"jump":{
+			"count":5
+		},
+		"jumpif":{
+			"count":5
+		},
+		"store":{
+			"count":5
+		},
+		"copy":{
+			"count":5
+		}
+	}
+}

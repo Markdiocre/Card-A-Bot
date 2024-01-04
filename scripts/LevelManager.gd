@@ -6,18 +6,28 @@ var level_2 = "res://levels/level_2.json"
 var level_3 = "res://levels/level_3.json"
 var level_4 = "res://levels/level_4.json"
 var level_5 = "res://levels/level_5.json"
+var level_6 = "res://levels/level_6.json"
+var level_7 = "res://levels/level_7.json"
+var level_8 = "res://levels/level_8.json"
+var level_9 = "res://levels/level_9.json"
+var level_10 = "res://levels/level_10.json"
+var level_11 = "res://levels/level_11.json"
 
 var levels = [
 	level_1,
 	level_2,
 	level_3,
 	level_4,
-	level_5
+	level_5,
+	level_6,
+	level_7,
+	level_8,
+	level_9,
+	level_10,
+	level_11
 ]
 
-var level_descs = [
-	
-]
+var level_descs = []
 
 var current_level
 

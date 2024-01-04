@@ -17,8 +17,8 @@ region_rect = Rect2(432, 432, 144, 144)
 
 [sub_resource type="Theme" id="Theme_7bp43"]
 GridContainer/constants/h_separation = 120
-GridContainer/constants/v_separation = 200
-HFlowContainer/constants/h_separation = 300
+GridContainer/constants/v_separation = 60
+HFlowContainer/constants/h_separation = 60
 HFlowContainer/constants/v_separation = 4
 Panel/styles/panel = SubResource("StyleBoxTexture_b3ukf")
 ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_dt646")
@@ -83,7 +83,7 @@ grow_vertical = 2
 
 [node name="grid" type="GridContainer" parent="levels/ScrollContainer"]
 layout_mode = 2
-columns = 7
+columns = 6
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

@@ -17,6 +17,7 @@ signal set_curr_card(card_name)
 signal program_success
 
 signal insert_line(message, type)
+signal get_connection_from_if(name,connection)
 
 #var current_game_state = 0
 #

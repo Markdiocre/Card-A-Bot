@@ -1,0 +1,30 @@
+{
+	"level": 11,
+	"title":"The other world",
+	"problem":"Submit the opposite of each value",
+	"inputs":[0,56,12,-67,-32,12],
+	"outputs":[0,-56,-12,67,32,-12],
+	"buttons":{
+		"inp":{
+			"count":5
+		},
+		"out":{
+			"count":5
+		},
+		"art":{
+			"count":5
+		},
+		"jump":{
+			"count":5
+		},
+		"jumpif":{
+			"count":5
+		},
+		"store":{
+			"count":5
+		},
+		"copy":{
+			"count":5
+		}
+	}
+}

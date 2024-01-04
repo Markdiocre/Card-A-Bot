@@ -82,12 +82,14 @@ func perform_operation():
 				GT.start()
 				await GT.timeout
 				MM.do_insert_line("Condition is true. Proceeding to THEN connection...","normal")
-				main.process_is_done()
+				print("Going to True Condition")
+				MM.emit_signal("get_connection_from_if",self.name,0)
 			else:
 				GT.start()
 				await GT.timeout
 				MM.do_insert_line("Condition is true. Proceeding to ELSE connection...","normal")
-				main.process_is_done(1)
+				print("Going to False Condition")
+				MM.emit_signal("get_connection_from_if",self.name,1)
 		else:
 			GT.start()
 			await GT.timeout

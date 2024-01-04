@@ -1,0 +1,30 @@
+{
+	"level": 10,
+	"title":"A little breather",
+	"problem":"Simply output the product of each value",
+	"inputs":[18,57,32,88,17,23,9,0],
+	"outputs":[0],
+	"buttons":{
+		"inp":{
+			"count":5
+		},
+		"out":{
+			"count":5
+		},
+		"art":{
+			"count":5
+		},
+		"jump":{
+			"count":5
+		},
+		"jumpif":{
+			"count":5
+		},
+		"store":{
+			"count":5
+		},
+		"copy":{
+			"count":5
+		}
+	}
+}

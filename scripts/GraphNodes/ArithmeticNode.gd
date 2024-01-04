@@ -80,11 +80,17 @@ func perform_operation():
 					await GT.timeout
 					
 					MM.do_insert_line("Applying Modulo of "+ str(main.current_box_value) + " to index "+ str(spin_value), "normal")
-					
-					main.current_box_value = int(floor(main.current_box_value % main.ARRAY_VALS[spin_value]))
-					GT.start()
-					await GT.timeout
-					current_value()
+					if main.ARRAY_VALS[spin_value] == 0:
+						GT.start()
+						await GT.timeout
+						MM.do_insert_line("ERROR: Cannot modulo by zero", "error")
+						MM.emit_signal("print_error","Calculation Error, Cannot modulo by zero")
+						return
+					else:
+						main.current_box_value = int(floor(main.current_box_value % main.ARRAY_VALS[spin_value]))
+						GT.start()
+						await GT.timeout
+						current_value()
 					
 			print("Value is now " + str(main.current_box_value))
 			main.process_is_done()

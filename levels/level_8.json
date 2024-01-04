@@ -1,0 +1,30 @@
+{
+	"level": 8,
+	"title":"Fibonacci Sequence",
+	"problem":"The fibonnaci sequence is a sequence in which each number is the sum of the two preceding ones",
+	"inputs":[0,1],
+	"outputs":[0,1,1,2,3,5],
+	"buttons":{
+		"inp":{
+			"count":5
+		},
+		"out":{
+			"count":5
+		},
+		"art":{
+			"count":5
+		},
+		"jump":{
+			"count":5
+		},
+		"jumpif":{
+			"count":5
+		},
+		"store":{
+			"count":5
+		},
+		"copy":{
+			"count":5
+		}
+	}
+}
