@@ -1,21 +1,21 @@
 {
-	"level": 1,
-	"title":"Getting Started",
-	"problem":"Since this is the start, the task is simple. Simply put inputs into the outputs",
+	"level":2,
+	"title":"Now let's jump!",
+	"problem":"Just like the last time but with the JUMP card",
 	"inputs":[1,2,3],
 	"outputs":[1,2,3],
 	"buttons":{
 		"inp":{
-			"count":3
+			"count":1
 		},
 		"out":{
-			"count":3
+			"count":1
 		},
 		"art":{
 			"count":0
 		},
 		"jump":{
-			"count":0
+			"count":1
 		},
 		"jumpif":{
 			"count":0

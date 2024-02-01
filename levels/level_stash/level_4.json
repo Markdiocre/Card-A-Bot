@@ -1,9 +1,9 @@
 {
-	"level": 11,
-	"title":"The other world",
-	"problem":"Submit the opposite of each value",
-	"inputs":[0,56,12,-67,-32,12],
-	"outputs":[0,-56,-12,67,32,-12],
+	"level": 4,
+	"title":"FizzBuzz?",
+	"problem":"FizzBuzz is a common algorithm for interviews. The algorithm shall output if the value is divisible by 3 or 5.",
+	"inputs":[0,3,5,10,16,25],
+	"outputs":[0,3,5,10,25],
 	"buttons":{
 		"inp":{
 			"count":5

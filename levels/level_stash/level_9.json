@@ -1,9 +1,9 @@
 {
 	"level": 9,
 	"title":"The greatest of em all",
-	"problem":"Output the largest number from the set of numbers",
+	"problem":"If the current number is greater than the previous, send it to the output",
 	"inputs":[44,22,16,75,34,89],
-	"outputs":[89],
+	"outputs":[75,89],
 	"buttons":{
 		"inp":{
 			"count":5

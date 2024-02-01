@@ -124,6 +124,9 @@ func _on_close_button_pressed():
 	MM.emit_signal("error_message_closed")
 	
 func _on_retry_button_pressed():
+	for level in LM.level_descs:
+		if int(LM.current_level["level"]) == int(level["level"]):
+			LM.current_level = level.duplicate(true)
 	LM.make_level()
 
 func _on_next_button_pressed():

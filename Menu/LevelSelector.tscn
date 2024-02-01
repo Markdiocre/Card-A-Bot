@@ -126,6 +126,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_hover_color = Color(0, 0.729412, 0, 1)
 theme_override_font_sizes/font_size = 100
-text = "EXIT"
+text = "BACK"
 
 [connection signal="pressed" from="CanvasLayer2/Control/exit" to="." method="_on_exit_pressed"]
