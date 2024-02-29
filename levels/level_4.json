@@ -1,6 +1,6 @@
 {
-	"level":3,
-	"title":"Manipulation via Arithmetic",
+	"level":4,
+	"title":"Squares",
 	"problem":"Output the square of each input",
 	"inputs":[1,2,3,4],
 	"outputs":[1,4,9,16],

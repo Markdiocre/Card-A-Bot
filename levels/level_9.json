@@ -1,9 +1,9 @@
 {
-	"level": 7,
-	"title":"A little breather",
-	"problem":"Simply output the product of each value",
-	"inputs":[18,57,32,0],
-	"outputs":[1026,32383,0],
+	"level": 9,
+	"title":"Fibonacci Sequence",
+	"problem":"The fibonnaci sequence is a sequence in which each number is the sum of the two preceding ones",
+	"inputs":[0,1],
+	"outputs":[0,1,1,2,3,5],
 	"buttons":{
 		"inp":{
 			"count":5

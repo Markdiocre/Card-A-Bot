@@ -1,9 +1,9 @@
 {
-	"level": 7,
-	"title":"A little breather",
-	"problem":"Simply output the product of each value",
-	"inputs":[18,57,32,0],
-	"outputs":[1026,32383,0],
+	"level": 10,
+	"title":"FizzBuzz?",
+	"problem":"FizzBuzz is a common algorithm for interviews. The algorithm shall output if the value is divisible by 3 or 5.",
+	"inputs":[0,3,5,10,16,25],
+	"outputs":[0,3,5,10,25],
 	"buttons":{
 		"inp":{
 			"count":5

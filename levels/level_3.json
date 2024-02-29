@@ -1,5 +1,5 @@
 {
-	"level": 5,
+	"level": 3,
 	"title":"Shuffle shuffle",
 	"problem":"Swap the values of every 2 numbers",
 	"inputs":[1,2,3,4],
@@ -12,13 +12,13 @@
 			"count":3
 		},
 		"art":{
-			"count":3
+			"count":0
 		},
 		"jump":{
 			"count":3
 		},
 		"jumpif":{
-			"count":3
+			"count":0
 		},
 		"store":{
 			"count":3

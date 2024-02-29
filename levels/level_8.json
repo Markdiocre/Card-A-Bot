@@ -1,0 +1,30 @@
+{
+	"level": 8,
+	"title":"Collatz Sequence",
+	"problem":"If the current value is even, divide it by 2. If it is odd, multiply it by 3 then add 1. The first 4 numbers given are manipulators and shall not be included in the main process of your algorithm.",
+	"inputs":[0,1,2,3,13],
+	"outputs":[13,40,20,10,5,16,8,4,2,1],
+	"buttons":{
+		"inp":{
+			"count":5
+		},
+		"out":{
+			"count":5
+		},
+		"art":{
+			"count":5
+		},
+		"jump":{
+			"count":5
+		},
+		"jumpif":{
+			"count":5
+		},
+		"store":{
+			"count":5
+		},
+		"copy":{
+			"count":5
+		}
+	}
+}
