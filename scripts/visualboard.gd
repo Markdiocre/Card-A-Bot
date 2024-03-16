@@ -36,7 +36,7 @@ var copy = preload("res://instantiables/GraphNodes/CopyFromNode.tscn")
 
 var is_dragging = false
 var mouse_initial_position = Vector2(0,0)
-var offSetPlaceholder = Vector2(0,0)
+var initial_offset_before_drag
 
 func _ready():
 	add_valid_connection_type(1,0)
@@ -52,8 +52,7 @@ func _physics_process(delta):
 		var deltaY = (get_viewport().get_mouse_position().y - mouse_initial_position.y)
 
 		#TODO Hanlde relative position of drag
-		if Vector2(deltaX, deltaY) != Vector2.ZERO:
-			offSetPlaceholder = Vector2(deltaX, deltaY)
+		scroll_offset = initial_offset_before_drag - Vector2(deltaX, deltaY)
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -61,6 +60,7 @@ func _input(event):
 			MOUSE_BUTTON_RIGHT:
 				if event.is_pressed():
 					is_dragging = true
+					initial_offset_before_drag = scroll_offset
 					mouse_initial_position = get_viewport().get_mouse_position()
 				elif event.is_released():
 					is_dragging = false
