@@ -34,6 +34,9 @@ var copy = preload("res://instantiables/GraphNodes/CopyFromNode.tscn")
 @onready var spawn_card = $"../sounds/spawn_card"
 @onready var disconnect_card = $"../sounds/disconnect_card"
 
+var is_dragging = false
+var mouse_initial_position = Vector2(0,0)
+var offSetPlaceholder = Vector2(0,0)
 
 func _ready():
 	add_valid_connection_type(1,0)
@@ -41,6 +44,29 @@ func _ready():
 	MM.level_instantiated.connect(set_labels)
 	MM.closed_card.connect(close_card)
 	
+
+func _physics_process(delta):
+	
+	if is_dragging and get_viewport().get_mouse_position() != mouse_initial_position + Vector2(10,10):
+		var deltaX = (get_viewport().get_mouse_position().x - mouse_initial_position.x)
+		var deltaY = (get_viewport().get_mouse_position().y - mouse_initial_position.y)
+
+		#TODO Hanlde relative position of drag
+		if Vector2(deltaX, deltaY) != Vector2.ZERO:
+			offSetPlaceholder = Vector2(deltaX, deltaY)
+
+func _input(event):
+	if event is InputEventMouseButton:
+		match event.button_index:
+			MOUSE_BUTTON_RIGHT:
+				if event.is_pressed():
+					is_dragging = true
+					mouse_initial_position = get_viewport().get_mouse_position()
+				elif event.is_released():
+					is_dragging = false
+					
+		
+				
 func close_card(from):
 	match from.card_type:
 		"inp":

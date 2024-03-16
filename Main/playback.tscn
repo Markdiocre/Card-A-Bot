@@ -398,6 +398,7 @@ grow_vertical = 2
 texture = ExtResource("7_tnras")
 
 [node name="winUI" type="CanvasLayer" parent="."]
+visible = false
 metadata/_edit_group_ = true
 
 [node name="ColorRect" type="ColorRect" parent="winUI"]
