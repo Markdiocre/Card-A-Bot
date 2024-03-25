@@ -6,7 +6,7 @@ signal game_loaded
 
 func save():
 	var save_dict = {
-		"completed_levels" : completed_levels
+		"completed_levels" : completed_levels,
 	}
 	
 	return save_dict
@@ -18,8 +18,13 @@ func save_game():
 	
 	game_file.store_line(json_string)
 	
+func delete_progress():
+	var game_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	
 func add_to_completed_levels(level):
-	completed_levels.append(level)
+	if level not in completed_levels:
+		completed_levels.append(level)
+	save_game()
 	
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):

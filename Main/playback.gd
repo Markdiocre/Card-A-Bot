@@ -130,7 +130,7 @@ func _on_retry_button_pressed():
 	LM.make_level()
 
 func _on_next_button_pressed():
-	LM.go_to_next_level()
+	LM.finish_level()
 
 
 func _on_button_pressed():

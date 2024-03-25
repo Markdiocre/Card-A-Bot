@@ -28,6 +28,7 @@ SceneTransition="*res://bases/SceneTransition.tscn"
 GT="*res://bases/global_timer.tscn"
 SL="*res://scripts/SaveLoad.gd"
 BgPlayer="*res://sounds/BGPlayer.tscn"
+LevelStash="*res://scripts/level_stash.gd"
 
 [display]
 

@@ -452,7 +452,7 @@ offset_right = 319.0
 offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "NEXT LEVEL"
+text = "FINISH"
 
 [node name="win_message" type="Label" parent="winUI/Panel"]
 layout_mode = 1

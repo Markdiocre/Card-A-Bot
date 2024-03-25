@@ -1,25 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://css5k5vklgmoe"]
+[gd_scene load_steps=12 format=3 uid="uid://u0t7kskfrpg"]
 
-[ext_resource type="Material" uid="uid://mxlf80h8xwto" path="res://bases/minimal_ctr.tres" id="1_5casu"]
-[ext_resource type="Script" path="res://Menu/MainMenu.gd" id="1_ikxsm"]
-[ext_resource type="FontFile" uid="uid://dvvjrvyalyu53" path="res://assets/ThaleahFat.ttf" id="2_pnj8e"]
-[ext_resource type="FontFile" uid="uid://cpab8cal6odo7" path="res://assets/monogram.ttf" id="3_0kk1k"]
+[ext_resource type="Script" path="res://Menu/PlaySelector.gd" id="1_6ut58"]
+[ext_resource type="Material" uid="uid://mxlf80h8xwto" path="res://bases/minimal_ctr.tres" id="1_si86m"]
+[ext_resource type="FontFile" uid="uid://dvvjrvyalyu53" path="res://assets/ThaleahFat.ttf" id="2_vwvec"]
+[ext_resource type="FontFile" uid="uid://cpab8cal6odo7" path="res://assets/monogram.ttf" id="3_xekeq"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_a7jn7"]
-font = ExtResource("2_pnj8e")
+[sub_resource type="LabelSettings" id="LabelSettings_io5go"]
+font = ExtResource("2_vwvec")
 font_size = 256
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rnvqq"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t4wwt"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7q41"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb2th"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ramp"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjut8"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_duq5i"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2sgh"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ws24a"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qlt8b"]
 
-[sub_resource type="Theme" id="Theme_qaait"]
+[sub_resource type="Theme" id="Theme_7prcl"]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
@@ -37,21 +37,21 @@ Button/constants/h_separation = 2
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 128
-Button/fonts/font = ExtResource("3_0kk1k")
-Button/styles/disabled = SubResource("StyleBoxEmpty_rnvqq")
-Button/styles/focus = SubResource("StyleBoxEmpty_c7q41")
-Button/styles/hover = SubResource("StyleBoxEmpty_1ramp")
-Button/styles/normal = SubResource("StyleBoxEmpty_duq5i")
-Button/styles/pressed = SubResource("StyleBoxEmpty_ws24a")
+Button/fonts/font = ExtResource("3_xekeq")
+Button/styles/disabled = SubResource("StyleBoxEmpty_t4wwt")
+Button/styles/focus = SubResource("StyleBoxEmpty_wb2th")
+Button/styles/hover = SubResource("StyleBoxEmpty_rjut8")
+Button/styles/normal = SubResource("StyleBoxEmpty_m2sgh")
+Button/styles/pressed = SubResource("StyleBoxEmpty_qlt8b")
 
-[node name="MainMenu" type="Control"]
+[node name="PlaySelector" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ikxsm")
+script = ExtResource("1_6ut58")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -65,7 +65,7 @@ color = Color(0.117647, 0.117647, 0.117647, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
-material = ExtResource("1_5casu")
+material = ExtResource("1_si86m")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -86,7 +86,7 @@ offset_bottom = -561.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "PsuedoCards"
-label_settings = SubResource("LabelSettings_a7jn7")
+label_settings = SubResource("LabelSettings_io5go")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -101,7 +101,7 @@ offset_right = -400.0
 offset_bottom = -222.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_qaait")
+theme = SubResource("Theme_7prcl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="menu"]
 layout_mode = 1
@@ -112,19 +112,22 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="start" type="Button" parent="menu/VBoxContainer"]
+[node name="pre" type="Button" parent="menu/VBoxContainer"]
 layout_mode = 2
-text = "PLAY"
+text = "PLAY PRE-MADE LEVELS"
 
-[node name="how" type="Button" parent="menu/VBoxContainer"]
+[node name="create" type="Button" parent="menu/VBoxContainer"]
 layout_mode = 2
-text = "HOW TO PLAY"
+text = "CREATE LEVEL"
 
-[node name="exit" type="Button" parent="menu/VBoxContainer"]
+[node name="import" type="Button" parent="menu/VBoxContainer"]
 layout_mode = 2
-text = "EXIT
+text = "IMPORT LEVEL"
+
+[node name="back" type="Button" parent="menu/VBoxContainer"]
+layout_mode = 2
+text = "BACK
 "
 
-[connection signal="pressed" from="menu/VBoxContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="menu/VBoxContainer/how" to="." method="_on_how_pressed"]
-[connection signal="pressed" from="menu/VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/pre" to="." method="_on_pre_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/back" to="." method="_on_back_pressed"]
