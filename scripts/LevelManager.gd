@@ -21,7 +21,7 @@ func json_to_utf8(json_var):
 	
 func utf8_to_json(base_string):
 	var converted = Marshalls.base64_to_utf8(base_string)
-	var parsed = JSON.stringify(converted)
+	var parsed = JSON.parse_string(converted)
 	return parsed
 	
 func clear_levels():

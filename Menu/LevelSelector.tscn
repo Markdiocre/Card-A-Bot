@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6v7oq3qgjggc"]
+[gd_scene load_steps=17 format=3 uid="uid://c6v7oq3qgjggc"]
 
 [ext_resource type="Script" path="res://Menu/LevelSelector.gd" id="1_8383t"]
 [ext_resource type="Material" uid="uid://mxlf80h8xwto" path="res://bases/minimal_ctr.tres" id="1_h1b24"]
@@ -42,6 +42,25 @@ font_size = 64
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gg5pd"]
 shader = ExtResource("5_1tub8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocn3l"]
+texture = ExtResource("4_qemt3")
+texture_margin_left = 9.0
+texture_margin_top = 10.0
+texture_margin_right = 9.0
+texture_margin_bottom = 9.0
+region_rect = Rect2(48, 240, 144, 144)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jrqdj"]
+font_size = 24
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cj7ik"]
+texture = ExtResource("4_qemt3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(432, 432, 144, 144)
 
 [node name="LevelSelector" type="Control"]
 layout_mode = 3
@@ -185,7 +204,7 @@ theme_override_colors/font_hover_color = Color(0, 0.729412, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "CLEAR PROGRESS"
 
-[node name="create" type="Button" parent="CanvasLayer2/Control2"]
+[node name="sandbox" type="Button" parent="CanvasLayer2/Control2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -198,7 +217,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_hover_color = Color(0, 0.729412, 0, 1)
 theme_override_font_sizes/font_size = 50
-text = "CREATE LEVEL"
+text = "Sandbox"
 
 [node name="clear_ui" type="CanvasLayer" parent="."]
 visible = false
@@ -271,8 +290,98 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="import_screen" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="import_screen"]
+material = SubResource("ShaderMaterial_gg5pd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="import_screen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -373.0
+offset_top = -152.0
+offset_right = 373.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ocn3l")
+
+[node name="Label" type="Label" parent="import_screen/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 17.0
+offset_right = -19.0
+offset_bottom = -251.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enter Level Code"
+label_settings = SubResource("LabelSettings_jrqdj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="code_text" type="TextEdit" parent="import_screen/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 70.0
+offset_right = -22.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.423529, 0.607843, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_cj7ik")
+placeholder_text = "Enter Your Code Here"
+wrap_mode = 1
+
+[node name="import_play" type="Button" parent="import_screen/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 412.0
+offset_top = -68.0
+offset_right = -24.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "PLAY"
+
+[node name="import_close" type="Button" parent="import_screen/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -68.0
+offset_right = -413.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "CLOSE"
+
 [connection signal="pressed" from="CanvasLayer2/Control/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="CanvasLayer2/Control/import" to="." method="_on_import_pressed"]
 [connection signal="pressed" from="CanvasLayer2/Control2/clear" to="." method="_on_clear_pressed"]
 [connection signal="pressed" from="clear_ui/Panel/close_create" to="." method="_on_close_create_pressed"]
 [connection signal="pressed" from="clear_ui/Panel/yes_create" to="." method="_on_yes_create_pressed"]
+[connection signal="pressed" from="import_screen/Panel/import_play" to="." method="_on_import_play_pressed"]
+[connection signal="pressed" from="import_screen/Panel/import_close" to="." method="_on_import_close_pressed"]
