@@ -11,10 +11,19 @@ extends Control
 
 @onready var titles = $Titles
 @onready var buttons = $Buttons
+@onready var sandbox_controls = $sandbox_controls
 
+@onready var play = $PlayButton/play
 
 func _ready():
-	MM.set_level_desc.connect(set_desc)
+	
+	if LM.level_type == 0:
+		MM.set_level_desc.connect(set_desc)
+		
+		sandbox_controls.hide()
+	elif LM.level_type == 1:
+		sandbox_controls.show()
+		play.disabled = true
 	
 func set_desc(desc,inputs,outputs):
 	level_desc.text = desc

@@ -124,10 +124,17 @@ func _on_close_button_pressed():
 	MM.emit_signal("error_message_closed")
 	
 func _on_retry_button_pressed():
-	for level in LM.level_descs:
-		if int(LM.current_level["level"]) == int(level["level"]):
-			LM.current_level = level.duplicate(true)
-	LM.make_level()
+
+	#FOR PREMADE ONLY
+	if LM.level_type == 0:
+		for level in LM.level_descs:
+			if int(LM.current_level["id"]) == int(level["id"]):
+				LM.current_level = level.duplicate(true)
+				
+				
+		LM.make_level("PREMADE")
+	elif LM.level_type == 1:
+		LM.make_level("SANDBOX")
 
 func _on_next_button_pressed():
 	LM.finish_level()

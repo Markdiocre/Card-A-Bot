@@ -20,4 +20,4 @@ func make_complete():
 
 func _on_panel_pressed():
 	LM.current_level = level_props.duplicate(true)
-	LM.make_level()
+	LM.make_level("PREMADE")
