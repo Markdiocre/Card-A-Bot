@@ -140,7 +140,8 @@ func _on_retry_button_pressed():
 	elif LM.level_type == 1:
 		LM.make_level("SANDBOX")
 	elif LM.level_type == 2:
-		LM.make_level("IMPORT")
+		
+		SandBoxManager.import_level(SandBoxManager.sandbox_settings)
 
 func _on_next_button_pressed():
 	if LM.level_type == 0:
