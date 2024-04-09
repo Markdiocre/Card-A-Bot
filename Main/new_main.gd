@@ -192,12 +192,13 @@ var debug_mode = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	go_to_scriptboard()
+	print(LM.level_type)
 	
 	
 	if LM.level_type == 0:
 		instantiate_level(LM.current_level)
-	elif LM.level_type == 1:
-		instantiate_level(SandBoxManager.sandbox_settings)
+	elif LM.level_type == 1 or LM.level_type == 2:
+		instantiate_level(SandBoxManager.duplicate_settings)
 		
 		
 	MM.error_message_closed.connect(handle_close_message)

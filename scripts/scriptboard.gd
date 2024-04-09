@@ -11,24 +11,35 @@ extends Control
 
 @onready var titles = $Titles
 @onready var buttons = $Buttons
-@onready var sandbox_controls = $sandbox_controls
 
 @onready var play = $PlayButton/play
+var sandbox = preload("res://instantiables/sandbox_controls.tscn")
 
 func _ready():
-	
-	if LM.level_type == 0:
-		MM.set_level_desc.connect(set_desc)
+	MM.set_level_desc.connect(set_desc)
+	print(LM.level_type)
+	if LM.level_type == 1:
 		
-		sandbox_controls.hide()
-	elif LM.level_type == 1:
-		sandbox_controls.show()
-		play.disabled = true
-	
+		add_child(sandbox.instantiate())
+		
+		if SandBoxManager.sandbox_settings["inputs"] == [] or SandBoxManager.sandbox_settings["outputs"] == [] or SandBoxManager.sandbox_settings["problem"].is_empty():
+			play.disabled = true
+		
 func set_desc(desc,inputs,outputs):
-	level_desc.text = desc
-	inps_label.text = ",".join(inputs)
-	outs_label.text = ",".join(outputs)
+	if desc.is_empty():
+		level_desc.text = "Empty. Simulation Disabled"
+	else:
+		level_desc.text = desc
+	
+	if inputs == []:
+		inps_label.text = "Empty. Simulation Disabled"
+	else:
+		inps_label.text = ",".join(inputs)
+		
+	if outputs == []:
+		outs_label.text = "Empty. Simulation Disabled"
+	else:
+		outs_label.text = ",".join(outputs)
 
 func _on_play_pressed():
 	SceneTransition.do_transition()
@@ -36,7 +47,11 @@ func _on_play_pressed():
 
 
 func _on_exit_pressed():
+	if LM.level_type == 1:
+		SandBoxManager.reset_settings()
+	
 	get_tree().change_scene_to_file("res://Menu/LevelSelector.tscn")
+	LM.level_type = 0
 
 func _on_check_button_toggled(button_pressed):
 	if button_pressed:

@@ -3,6 +3,9 @@ var level_scene = preload("res://instantiables/level_scene.tscn")
 @onready var grid = $levels/ScrollContainer/grid
 
 @onready var clear_ui = $clear_ui
+@onready var import_ui = $import_ui
+@onready var code = $import_ui/Panel/code
+@onready var import_time = $import_ui/import_time
 
 
 var is_loaded = false
@@ -23,6 +26,7 @@ func _ready():
 	instantiate_levels()
 	
 	clear_ui.hide()
+	import_ui.hide()
 		
 		
 func _on_exit_pressed():
@@ -51,7 +55,29 @@ func _on_yes_create_pressed():
 	instantiate_levels()
 	clear_ui.hide()
 
-
-
 func _on_sandbox_pressed():
+	SandBoxManager.reset_settings()
 	LM.make_level("SANDBOX")
+
+
+func _on_play_custom_pressed():
+	import_ui.show()
+
+
+func _on_close_import_pressed():
+	import_ui.hide()
+
+
+func _on_instantiate_import_pressed():
+	var data = SandBoxManager.utf8_to_json(code.text)
+	var panel = $import_ui/Panel
+	if data != null:
+		SandBoxManager.import_level(data)
+	else:
+		panel.modulate = Color.DARK_RED
+		import_time.start()
+
+
+func _on_import_time_timeout():
+	var panel = $import_ui/Panel
+	panel.modulate = Color.WHITE

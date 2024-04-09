@@ -43,7 +43,6 @@ func _ready():
 	add_valid_connection_type(2,0)
 	MM.level_instantiated.connect(set_labels)
 	MM.closed_card.connect(close_card)
-	
 
 func _physics_process(delta):
 	

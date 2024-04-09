@@ -24,11 +24,14 @@ extends Control
 @onready var curr_value = $trackers/Panel/curr_value/curr_value
 @onready var inps = $trackers/Panel/inps/inps
 @onready var outs = $trackers/Panel/outs/outs
+@onready var sandbox_ui_win = $sandbox_ui_win
 
 #sounds
 @onready var line_insert = $sounds/line_insert
 @onready var win = $sounds/win
 @onready var wrong = $sounds/wrong
+@onready var copy_timer = $sandbox_ui_win/copy_timer
+@onready var sandbox_panel = $sandbox_ui_win/sandbox_panel
 
 
 var line = preload("res://instantiables/line.tscn")
@@ -54,6 +57,7 @@ var win_messages = [
 func _ready():
 	error_ui.hide()
 	win_ui.hide()
+	sandbox_ui_win.hide()
 	
 	MM.print_error.connect(display_error_message)
 	MM.insert_line.connect(insert_line)
@@ -135,10 +139,40 @@ func _on_retry_button_pressed():
 		LM.make_level("PREMADE")
 	elif LM.level_type == 1:
 		LM.make_level("SANDBOX")
+	elif LM.level_type == 2:
+		LM.make_level("IMPORT")
 
 func _on_next_button_pressed():
-	LM.finish_level()
+	if LM.level_type == 0:
+		LM.finish_level()
+	elif LM.level_type == 1:
+		sandbox_ui_win.show()
+	elif LM.level_type == 2:
+		get_tree().change_scene_to_file("res://Menu/LevelSelector.tscn")
 
 
 func _on_button_pressed():
 	GT.wait_time = 0.01
+
+
+func _on_close_sandbox_pressed():
+	SandBoxManager.reset_settings()
+	get_tree().change_scene_to_file("res://Menu/LevelSelector.tscn")
+	LM.level_type = 0
+
+
+func _on_edit_sandbox_pressed():
+	win_ui.hide()
+	sandbox_ui_win.hide()
+	MM.emit_signal("error_message_closed")
+
+
+func _on_copy_to_clipboard_pressed():
+	
+	sandbox_panel.modulate = Color.GREEN
+	copy_timer.start()
+	DisplayServer.clipboard_set(SandBoxManager.json_to_utf8(SandBoxManager.sandbox_settings))
+
+
+func _on_copy_timer_timeout():
+	sandbox_panel.modulate = Color.WHITE

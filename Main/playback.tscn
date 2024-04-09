@@ -206,7 +206,7 @@ Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 2
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
-Button/font_sizes/font_size = 16
+Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("5_42pr2")
 Button/styles/disabled = SubResource("StyleBoxFlat_1plvd")
 Button/styles/focus = SubResource("StyleBoxFlat_p3esc")
@@ -321,7 +321,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -157.0
+offset_left = -201.0
 offset_top = 15.0
 offset_right = -15.0
 offset_bottom = 75.0
@@ -802,7 +802,97 @@ stream = ExtResource("12_u3rs4")
 [node name="wrong" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("13_jq6mb")
 
+[node name="sandbox_ui_win" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="sandbox_ui_win"]
+material = SubResource("ShaderMaterial_cwtcf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="sandbox_panel" type="Panel" parent="sandbox_ui_win"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -594.0
+offset_top = -126.0
+offset_right = 572.0
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_wjyoj")
+
+[node name="win_message" type="Label" parent="sandbox_ui_win/sandbox_panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 41.0
+offset_top = 19.0
+offset_right = -29.0
+offset_bottom = 146.0
+grow_horizontal = 2
+text = "Your sandbox level is a success! What do you want to do?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="sandbox_ui_win/sandbox_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = 158.0
+offset_right = -28.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+columns = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sandbox_ui_win/sandbox_panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="close_sandbox" type="Button" parent="sandbox_ui_win/sandbox_panel/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CLOSE SANDBOX"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="sandbox_ui_win/sandbox_panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="edit_sandbox" type="Button" parent="sandbox_ui_win/sandbox_panel/GridContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CONTINUE EDITING"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="sandbox_ui_win/sandbox_panel/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="copy_to_clipboard" type="Button" parent="sandbox_ui_win/sandbox_panel/GridContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "COPY LEVEL TO CLIPBOARD"
+
+[node name="copy_timer" type="Timer" parent="sandbox_ui_win"]
+
 [connection signal="pressed" from="cmd/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="errorUI/Panel/close_button" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="winUI/Panel/retry_button" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="winUI/Panel/next_button" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="sandbox_ui_win/sandbox_panel/GridContainer/VBoxContainer/close_sandbox" to="." method="_on_close_sandbox_pressed"]
+[connection signal="pressed" from="sandbox_ui_win/sandbox_panel/GridContainer/VBoxContainer2/edit_sandbox" to="." method="_on_edit_sandbox_pressed"]
+[connection signal="pressed" from="sandbox_ui_win/sandbox_panel/GridContainer/VBoxContainer3/copy_to_clipboard" to="." method="_on_copy_to_clipboard_pressed"]
+[connection signal="timeout" from="sandbox_ui_win/copy_timer" to="." method="_on_copy_timer_timeout"]
