@@ -743,9 +743,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -82.0
+offset_left = -154.0
 offset_top = 15.0
-offset_right = 78.0
+offset_right = 120.0
 offset_bottom = 79.0
 grow_horizontal = 2
 theme = SubResource("Theme_5uw86")
@@ -753,12 +753,10 @@ metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="UIHide"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -39.0
-offset_right = 24.0
-grow_horizontal = 2
+offset_left = -49.0
+offset_right = 197.0
 grow_vertical = 2
 metadata/_edit_group_ = true
 
@@ -775,6 +773,20 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Hide Controls"
 
+[node name="Panel2" parent="UIHide" instance=ExtResource("15_cdt5j")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -31.5
+offset_right = 0.0
+offset_bottom = 31.5
+grow_horizontal = 0
+grow_vertical = 2
+
 [node name="sounds" type="Node2D" parent="."]
 
 [node name="connect_card" type="AudioStreamPlayer" parent="sounds"]
@@ -787,13 +799,6 @@ stream = ExtResource("13_irvmy")
 
 [node name="disconnect_card" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("14_nkb0h")
-
-[node name="Panel" parent="." instance=ExtResource("15_cdt5j")]
-layout_mode = 0
-offset_left = 1084.0
-offset_top = 15.0
-offset_right = 1149.0
-offset_bottom = 78.0
 
 [connection signal="connection_request" from="visualboard" to="visualboard" method="_on_connection_request"]
 [connection signal="disconnection_request" from="visualboard" to="visualboard" method="_on_disconnection_request"]
