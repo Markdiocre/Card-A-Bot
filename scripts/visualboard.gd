@@ -10,6 +10,7 @@ var jumpif = preload("res://instantiables/GraphNodes/JumpIfGraphNode.tscn")
 var store = preload("res://instantiables/GraphNodes/StoreToNode.tscn")
 var copy = preload("res://instantiables/GraphNodes/CopyFromNode.tscn")
 
+@onready var start_graph_node = $StartGraphNode
 @onready var inp_button = $"../Buttons/Panel/BoxContainer/ButtonVert/inp_button"
 @onready var art__button = $"../Buttons/Panel/BoxContainer/ButtonVert/art__button"
 @onready var jump_button = $"../Buttons/Panel/BoxContainer/ButtonVert/jump_button"
@@ -38,31 +39,67 @@ var is_dragging = false
 var mouse_initial_position = Vector2(0,0)
 var initial_offset_before_drag
 
+#For Android only
+@onready var android_block = $"../android_block"
+var mouse_clicks_only = true
+var hovering_card = false
+
 func _ready():
 	add_valid_connection_type(1,0)
 	add_valid_connection_type(2,0)
 	MM.level_instantiated.connect(set_labels)
 	MM.closed_card.connect(close_card)
-
-func _physics_process(delta):
 	
-	if is_dragging and get_viewport().get_mouse_position() != mouse_initial_position + Vector2(10,10):
-		var deltaX = (get_viewport().get_mouse_position().x - mouse_initial_position.x)
-		var deltaY = (get_viewport().get_mouse_position().y - mouse_initial_position.y)
+	android_block.hide()
+	start_graph_node.mouse_entered.connect(if_mouse_over_card)
+	start_graph_node.mouse_exited.connect(if_mouse_leave_over_card)
+#	match OS.get_name():
+#		"Windows","macOS","Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD", "Web":
+#			mouse_clicks_only = true
+#		"Android","iOS":
+#			mouse_clicks_only = false
 
-		#TODO Hanlde relative position of drag
-		scroll_offset = initial_offset_before_drag - Vector2(deltaX, deltaY)
+			
 
 func _input(event):
-	if event is InputEventMouseButton:
-		match event.button_index:
-			MOUSE_BUTTON_RIGHT:
-				if event.is_pressed():
-					is_dragging = true
-					initial_offset_before_drag = scroll_offset
-					mouse_initial_position = get_viewport().get_mouse_position()
-				elif event.is_released():
-					is_dragging = false
+	
+#	if event is InputEventMouseButton:
+#		match event.button_index:
+#			MOUSE_BUTTON_RIGHT:
+#
+#				if event.is_pressed():
+#
+#					is_dragging = true
+#					initial_offset_before_drag = scroll_offset
+#					mouse_initial_position = get_viewport().get_mouse_position()
+#				elif event.is_released():
+#					is_dragging = false
+#
+#				if is_dragging and get_viewport().get_mouse_position() != mouse_initial_position + Vector2(10,10):
+#						var deltaX = (get_viewport().get_mouse_position().x - mouse_initial_position.x)
+#						var deltaY = (get_viewport().get_mouse_position().y - mouse_initial_position.y)
+#
+#
+#						scroll_offset = initial_offset_before_drag - Vector2(deltaX, deltaY)
+	
+	if event is InputEventScreenTouch and is_dragging:
+		if event.is_pressed() and hovering_card == false:		
+			mouse_initial_position = event.position
+			initial_offset_before_drag = scroll_offset
+	
+	elif event is InputEventScreenDrag and is_dragging:
+		if event.position != mouse_initial_position + Vector2(10,10):
+			var deltaX = event.position.x - mouse_initial_position.x
+			var deltaY = event.position.y - mouse_initial_position.y
+			
+			scroll_offset = initial_offset_before_drag - Vector2(deltaX, deltaY)
+
+		
+	
+	
+#	
+
+	
 					
 		
 				
@@ -166,18 +203,25 @@ func summon(type: String):
 			temp = copy.instantiate()
 			main.BUTTONS.copy.count -= 1
 	
-	temp.position_offset = Vector2(scroll_offset.x + round(get_viewport_rect().size.x / 2),scroll_offset.y + 100)
-	print(get_viewport_rect().size)
+	temp.position_offset = Vector2(scroll_offset.x + round(get_viewport_rect().size.x / 2),scroll_offset.y + 500)
 	
 	for node in get_children():
 		node.selected = false
 		
 	temp.selected = true
+	temp.mouse_entered.connect(if_mouse_over_card)
+	temp.mouse_exited.connect(if_mouse_leave_over_card)
 	
 	
 	add_child(temp)
 	set_labels()
 	spawn_card.play()
+
+func if_mouse_over_card():
+	hovering_card = true
+
+func if_mouse_leave_over_card():
+	hovering_card = false
 
 func _on_inp_button_pressed():
 	summon("inp")
@@ -312,3 +356,11 @@ func _on_store_button_pressed():
 
 func _on_copy_button_pressed():
 	summon("copy")
+
+func _on_panning_mode_toggled(button_pressed):
+	if button_pressed == true:
+		is_dragging = true
+		android_block.show()
+	elif button_pressed == false:
+		is_dragging = false
+		android_block.hide()
