@@ -72,7 +72,9 @@ func _on_instantiate_import_pressed():
 	var data = SandBoxManager.utf8_to_json(code.text)
 	var panel = $import_ui/Panel
 	if data != null:
-		SandBoxManager.import_level(data)
+		if SandBoxManager.import_level(data) == false:
+			panel.modulate = Color.DARK_RED
+			import_time.start()
 	else:
 		panel.modulate = Color.DARK_RED
 		import_time.start()

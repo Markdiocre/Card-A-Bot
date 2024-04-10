@@ -86,6 +86,9 @@ func reset_settings():
 	sandbox_settings["buttons"]["copy"]["count"] = 0
 
 func import_level(dict):
+	if !dict.has_all(["title","problem","inputs","outputs","buttons"]):
+		return false
+	
 	sandbox_settings["title"] = dict["title"]
 	sandbox_settings["problem"] = dict["problem"]
 	sandbox_settings["inputs"] = dict["inputs"]
