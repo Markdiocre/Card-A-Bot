@@ -308,6 +308,37 @@ var level_10 = {
 	}
 }
 
+var level_11 = {
+	"id": "11",
+	"title": "Counting",
+	"problem": "Count from 1 to 10",
+	"inputs":[1, 10],
+	"outputs":[1,2,3,4,5,6,7,8,9,10],
+	"buttons":{
+		"inp":{
+			"count": 5
+		},
+		"out":{
+			"count": 5
+		},
+		"art":{
+			"count": 5
+		},
+		"jump":{
+			"count": 5
+		},
+		"jumpif":{
+			"count": 5
+		},
+		"store":{
+			"count": 5
+		},
+		"copy":{
+			"count": 5
+		}
+	}
+}
+
 var levels = [
 	level_1,
 	level_2,
@@ -318,7 +349,8 @@ var levels = [
 	level_7,
 	level_8,
 	level_9,
-	level_10
+	level_10,
+	level_11
 ]
 
 func get_premade_levels():

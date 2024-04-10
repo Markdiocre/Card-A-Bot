@@ -11,6 +11,7 @@ extends Control
 
 @onready var titles = $Titles
 @onready var buttons = $Buttons
+@onready var play_button = $PlayButton
 
 @onready var play = $PlayButton/play
 var sandbox = preload("res://instantiables/sandbox_controls.tscn")
@@ -57,6 +58,8 @@ func _on_check_button_toggled(button_pressed):
 	if button_pressed:
 		buttons.hide()
 		titles.hide()
+		play_button.hide()
 	else:
 		buttons.show()
 		titles.show()
+		play_button.show()

@@ -166,7 +166,8 @@ func summon(type: String):
 			temp = copy.instantiate()
 			main.BUTTONS.copy.count -= 1
 	
-	temp.position_offset = card_spawn.position
+	temp.position_offset = Vector2(scroll_offset.x + round(get_viewport_rect().size.x / 2),scroll_offset.y + 100)
+	print(get_viewport_rect().size)
 	
 	for node in get_children():
 		node.selected = false
