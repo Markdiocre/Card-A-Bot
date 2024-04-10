@@ -43,6 +43,7 @@ var initial_offset_before_drag
 @onready var android_block = $"../android_block"
 var mouse_clicks_only = true
 var hovering_card = false
+var is_panning_enabled = false
 
 func _ready():
 	add_valid_connection_type(1,0)
@@ -82,10 +83,14 @@ func _input(event):
 #
 #						scroll_offset = initial_offset_before_drag - Vector2(deltaX, deltaY)
 	
-	if event is InputEventScreenTouch and is_dragging:
-		if event.is_pressed() and hovering_card == false:		
+	if event is InputEventScreenTouch and is_panning_enabled:
+		print(mouse_initial_position)
+		if event.is_pressed() and hovering_card == false:	
+			is_dragging = true	
 			mouse_initial_position = event.position
 			initial_offset_before_drag = scroll_offset
+		else:
+			is_dragging = false
 	
 	elif event is InputEventScreenDrag and is_dragging:
 		if event.position != mouse_initial_position + Vector2(10,10):
@@ -359,8 +364,8 @@ func _on_copy_button_pressed():
 
 func _on_panning_mode_toggled(button_pressed):
 	if button_pressed == true:
-		is_dragging = true
+		is_panning_enabled = true
 		android_block.show()
 	elif button_pressed == false:
-		is_dragging = false
+		is_panning_enabled = false
 		android_block.hide()
