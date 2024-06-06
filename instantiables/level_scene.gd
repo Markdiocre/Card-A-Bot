@@ -12,7 +12,6 @@ var level
 
 func _ready():
 	label.text = level_props["title"]
-	
 
 func make_complete():
 	is_completed = true
