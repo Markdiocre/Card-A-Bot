@@ -6,6 +6,7 @@ var level_1 = {
 		"problem": "Since this is the start, the task is simple. Simply put inputs into the outputs",
 		"inputs":[1, 2, 3],
 		"outputs":[1, 2, 3],
+		"difficulty": 1,
 		"buttons":{
 			"inp":{
 				"count": 3
@@ -36,6 +37,7 @@ var level_2 = {
 	"problem": "Just like the last time but with the JUMP card",
 	"inputs":[1, 2, 3],
 	"outputs":[1, 2, 3],
+	"difficulty": 1,
 	"buttons":{
 		"inp":{
 			"count": 1
@@ -67,6 +69,7 @@ var level_3 = {
 	"problem": "Swap the values of every 2 numbers",
 	"inputs":[1, 2, 3, 4],
 	"outputs":[2, 1, 4, 3],
+	"difficulty": 1,
 	"buttons":{
 		"inp":{
 			"count": 3
@@ -98,6 +101,7 @@ var level_4 = {
 	"problem": "Output the square of each input",
 	"inputs":[1, 2, 3, 4],
 	"outputs":[1, 4, 9, 16],
+	"difficulty": 1,
 	"buttons":{
 		"inp":{
 			"count": 1
@@ -129,6 +133,7 @@ var level_5 = {
 	"problem": "If the number is even, send it to the output",
 	"inputs":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 	"outputs":[0, 2, 4, 6, 8, 10],
+	"difficulty": 2,
 	"buttons":{
 		"inp":{
 			"count": 5
@@ -160,6 +165,7 @@ var level_6 = {
 	"problem": "Submit the opposite of each value",
 	"inputs":[0, 56, 12, - 67, - 32, 12],
 	"outputs":[0, - 56, - 12, 67, 32, - 12],
+	"difficulty": 2,
 	"buttons":{
 		"inp":{
 			"count": 5
@@ -191,6 +197,7 @@ var level_7 = {
 	"problem": "Simply output the product of each value",
 	"inputs":[18, 57, 32, 0],
 	"outputs":[1026, 32383, 0],
+	"difficulty": 1,
 	"buttons":{
 		"inp":{
 			"count": 5
@@ -222,6 +229,7 @@ var level_8 = {
 	"problem": "If the current value is even, divide it by 2. If it is odd, multiply it by 3 then add 1. The first 4 numbers given are manipulators and shall not be included in the main process of your algorithm.",
 	"inputs":[0, 1, 2, 3, 13],
 	"outputs":[13, 40, 20, 10, 5, 16, 8, 4, 2, 1],
+	"difficulty": 3,
 	"buttons":{
 		"inp":{
 			"count": 5
@@ -253,6 +261,7 @@ var level_9 = {
 	"problem": "The fibonnaci sequence is a sequence in which each number is the sum of the two preceding ones",
 	"inputs":[0, 1],
 	"outputs":[0, 1, 1, 2, 3, 5],
+	"difficulty": 2,
 	"buttons":{
 		"inp":{
 			"count": 5
@@ -283,6 +292,7 @@ var level_10 = {
 	"problem": "FizzBuzz is a common algorithm for interviews. The algorithm shall output if the value is divisible by 3 or 5.",
 	"inputs":[0, 3, 5, 10, 16, 25],
 	"outputs":[0, 3, 5, 10, 25],
+	"difficulty": 2,
 	"buttons":{
 		"inp":{
 			"count": 5
@@ -314,6 +324,7 @@ var level_11 = {
 	"problem": "Count from 1 to 10",
 	"inputs":[1, 10],
 	"outputs":[1,2,3,4,5,6,7,8,9,10],
+	"difficulty": 2,
 	"buttons":{
 		"inp":{
 			"count": 5
